@@ -24,7 +24,8 @@ dependencies = [
     "matplotlib",
     "wordcloud",
     "validators",
-    "pydantic"
+    "pydantic",
+    "asciidoc3"
 ]
 
 

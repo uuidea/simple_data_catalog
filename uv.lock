@@ -23,6 +23,15 @@ wheels = [
 ]
 
 [[package]]
+name = "asciidoc3"
+version = "3.2.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/7a/25/723159c9b5aba1ad394ee8b21c94681040d1856e5e06179b5095821c9aee/asciidoc3-3.2.3.tar.gz", hash = "sha256:76ba36f6b328a6af40b62602f64ef75e41b250c61a253bd6b376da8d524ccf06", size = 885635 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f5/42/dd628d8c8d75f9ed92e71f548974c540bd7cba6bd659fece1e0838dfd2e3/asciidoc3-3.2.3-py3-none-any.whl", hash = "sha256:cf9bc12bbe3d0efa7a2e0731610439ab620814ac1741ddb59e956f4a9bf42775", size = 913513 },
+]
+
+[[package]]
 name = "contourpy"
 version = "1.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1698,6 +1707,7 @@ name = "simple-data-catalog"
 version = "0.0.1"
 source = { editable = "." }
 dependencies = [
+    { name = "asciidoc3" },
     { name = "igraph" },
     { name = "matplotlib", version = "3.7.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
     { name = "matplotlib", version = "3.9.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.9.*'" },
@@ -1715,6 +1725,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "asciidoc3" },
     { name = "igraph" },
     { name = "matplotlib" },
     { name = "pandas" },

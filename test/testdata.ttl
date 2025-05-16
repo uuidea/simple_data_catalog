@@ -1,0 +1,76 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix ex: <www.example.com/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sdc: <https://w3id.org/simpledatacatalog/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:fhwiehduwke a sdc:DataCatalog ;
+    dcterms:identifier "a test data catalog created to validate the schema" ;
+    dcterms:title "test data catalog" ;
+    dcat:dataset ex:herrcgre .
+
+ex:sfasdggfvrln a sdc:QualityMeasurement ;
+    dqv:computedOn ex:herrcgre ;
+    dqv:isMeasurementOf ex:fkrhkqewjewrc ;
+    dqv:value "0.9"^^xsd:float ;
+    prov:generatedAtTime "2025-04-22"^^xsd:date .
+
+ex:abc a skos:Concept ;
+    skos:altLabel "juice" ;
+    skos:definition "energy is energy" ;
+    skos:prefLabel "energy" .
+
+ex:abcde a sdc:DatasetSeries ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "My name" ] ;
+    dcterms:title "all the datasets by this publisher" .
+
+ex:bcd a skos:Concept ;
+    skos:altLabel "practice" ;
+    skos:definition "test is just for testing" ;
+    skos:prefLabel "test" .
+
+ex:def a skos:Concept ;
+    skos:altLabel "information (leave a comment ;-))" ;
+    skos:definition "data is plural of datum" ;
+    skos:prefLabel "data" .
+
+ex:fkrhkqewjewrc a sdc:Metric ;
+    skos:definition "an example of a data quality metric" ;
+    skos:prefLabel "example metric" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension "Completeness" .
+
+ex:herrcgre a dcat:Dataset ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
+    dcterms:title "test dataset" ;
+    time:hasEnd "draft" ;
+    vcard:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "my.name@example.com" ] ;
+    dcat:inSeries ex:abcde ;
+    dcat:theme ex:abc,
+        ex:bcd,
+        ex:def ;
+    dcat:version [ a dcterms:PeriodOfTime ;
+            time:hasBeginning "2025-01-01"^^xsd:date ;
+            time:hasEnd "2025-12-31"^^xsd:date ] .
+
+[] a sdc:Container ;
+    sdc:concepts ex:abc,
+        ex:bcd,
+        ex:def ;
+    sdc:dataCatalog ex:fhwiehduwke ;
+    sdc:datasets ex:herrcgre ;
+    sdc:metrics ex:fkrhkqewjewrc ;
+    sdc:qualityMeasurements ex:sfasdggfvrln ;
+    sdc:series ex:abcde .
+
