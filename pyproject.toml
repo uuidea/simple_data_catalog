@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "simple_data_catalog"
+version = "0.0.1"
+authors = [
+  { name="Joep van Genuchten", email="joep@uuidea.eu" },
+]
+description = "A simple package that supports data catalogging for small organizations and projects"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "pandas",
+    "rdflib",
+    "igraph",
+    "matplotlib",
+    "wordcloud",
+    "validators",
+    "pydantic"
+]
+
+
+[project.urls]
+Homepage = "https://github.com/uuidea/SimpleMDDataCatalog"
+Issues = "https://github.com/uuidea/SimpleMDDataCatalog/issues"
