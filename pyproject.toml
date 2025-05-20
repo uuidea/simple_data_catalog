@@ -25,7 +25,8 @@ dependencies = [
     "wordcloud",
     "validators",
     "pydantic",
-    "asciidoc3"
+    "asciidoc3",
+    "jinja2"
 ]
 
 

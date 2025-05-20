@@ -1,3 +1,4 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dqv: <http://www.w3.org/ns/dqv#> .
@@ -53,9 +54,9 @@ ex:herrcgre a dcat:Dataset ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "my name" ] ;
     dcterms:title "test dataset" ;
-    time:hasEnd "draft" ;
     vcard:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "my.name@example.com" ] ;
+    adms:status "draft" ;
     dcat:inSeries ex:abcde ;
     dcat:theme ex:abc,
         ex:bcd,
