@@ -1,5 +1,7 @@
 = test dataset
 
+some description
+
 == about the publication
 
 * publisher: my name
@@ -10,6 +12,16 @@
 * version: 
 * last modified: 2025-5-20
 
+
+
+== about the data
+* temporal cover:
+** start: 2025-01-01
+** end: 2025-12-31
+* themes:
+** link:bsd.adoc[practice]
+
+== Distributions
 [cols= "1,1"]
 |===
 | *distribution*
@@ -19,12 +31,6 @@
 |ttl
 |===
 
-== about the data
-* temporal cover:
-** start: 2025-01-01
-** end: 2025-12-31
-* themes:
-** link:bsd.adoc[practice]
 
 == data quality
 
