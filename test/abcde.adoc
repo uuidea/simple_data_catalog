@@ -21,10 +21,13 @@ some description
 ** link:bsd.adoc[practice]
 
 == Data sets by theme
+
+// word cloud goes here
+
 [cols= "1, 1"]
 |===
-|*theme*
-| *distribution*
+|*Theme*
+| *Data set*
 
 |link:bsd.adoc[practice]
 |link:herrcgre.adoc[Test data set]

@@ -22,13 +22,20 @@ some description
 ** link:bsd.adoc[practice]
 
 == Distributions
-[cols= "1,1"]
+[cols= "1,1,1,1,1"]
 |===
 | *distribution*
 |*format*
+|*version*
+|*last modified*
+|*access url*
 
-|link:somedistribution.adoc[some distribution title]
+|some distribution title
 |ttl
+|4.1.1
+|2025-12-31
+|link:www.example.com/some-distribution-title.ttl[www.example.com/some-distribution-title.ttl]
+
 |===
 
 
