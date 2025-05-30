@@ -1,6 +1,6 @@
 = Some Other Dataset
 
-some description
+some description for this other data set
 
 == about the publication
 

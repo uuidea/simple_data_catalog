@@ -6,6 +6,6 @@ from model.datamodel import DataCatalog
 
 # idea: import the pydantic model and create page classes that refer to its obejects and have a methtod that renders the page
 
-class catalog_page(BaseModel):
+class create_catalog_page(BaseModel):
     asciidoc_string: str
     about: DataCatalog
