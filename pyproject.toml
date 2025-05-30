@@ -26,7 +26,12 @@ dependencies = [
     "validators",
     "pydantic",
     "asciidoc3",
-    "jinja2"
+    "jinja2",
+    "argparse",
+    "pathlib",
+    "rich",
+    "dataclasses"
+
 ]
 
 
