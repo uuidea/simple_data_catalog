@@ -53,14 +53,14 @@ some description for this other data set
 
 |===
 
-// == data lineage
+== data lineage
 
-// [cols="1"]
-// |===
+[cols="1"]
+|===
 
-// |*was derived from*
+|*was derived from*
 
-// |link:someotherdataset.adoc[some other data set]
-// |===
+|link:someotherdataset.adoc[some other data set]
+|===
 
-// === Supply Chain Analysis
+=== Supply Chain Analysis

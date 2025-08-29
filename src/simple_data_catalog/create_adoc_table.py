@@ -13,14 +13,14 @@ def create_adoc_table(entries: list, num_cols: int):
         return "table dimensions inconsistent"
 
     table_str = ""
-    col_specs = "[cols="+",".join(["1"] * num_cols)+"]\n"
+    col_specs = "[cols="+"\""+",".join(["1"] * num_cols)+"\"]\n"
     header = "|=== \n"
 
     table_str += col_specs+ header
 
    
     for entry in entries:
-        table_str=table_str + "| "+ str(entry) + "\n"
+        table_str=table_str + "a| "+ str(entry) + "\n" # a is to support lists
         
-
+    table_str= table_str + "|==="
     return table_str

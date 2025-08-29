@@ -2,21 +2,25 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dqv: <http://www.w3.org/ns/dqv#> .
-@prefix ex: <www.example.com/> .
+@prefix ex: <http://www.example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://w3id.org/linkml/examples/personinfo/:> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix sdc: <https://w3id.org/simpledatacatalog/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:fhwiehduwke a sdc:DataCatalog ;
-    dcterms:identifier "a test data catalog created to validate the schema" ;
+ex:fhwiehduwke a dcat:Catalog ;
+    dcterms:description "a test data catalog created to validate the schema" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
     dcterms:title "test data catalog" ;
-    dcat:dataset ex:herrcgre .
+    dcat:dataset ex:herrcgre ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] .
 
-ex:sfasdggfvrln a sdc:QualityMeasurement ;
+ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:computedOn ex:herrcgre ;
     dqv:isMeasurementOf ex:fkrhkqewjewrc ;
     dqv:value "0.9"^^xsd:float ;
@@ -27,7 +31,7 @@ ex:abc a skos:Concept ;
     skos:definition "energy is energy" ;
     skos:prefLabel "energy" .
 
-ex:abcde a sdc:DatasetSeries ;
+ex:abcde a dcat:DatasetSeries ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "My name" ] ;
     dcterms:title "all the datasets by this publisher" .
@@ -42,7 +46,7 @@ ex:def a skos:Concept ;
     skos:definition "data is plural of datum" ;
     skos:prefLabel "data" .
 
-ex:fkrhkqewjewrc a sdc:Metric ;
+ex:fkrhkqewjewrc a dqv:Metric ;
     skos:definition "an example of a data quality metric" ;
     skos:prefLabel "example metric" ;
     dqv:expectedDataType xsd:float ;
@@ -65,13 +69,13 @@ ex:herrcgre a dcat:Dataset ;
             time:hasBeginning "2025-01-01"^^xsd:date ;
             time:hasEnd "2025-12-31"^^xsd:date ] .
 
-[] a sdc:Container ;
-    sdc:concepts ex:abc,
+[] a ns1:Container ;
+    ns1:concepts ex:abc,
         ex:bcd,
         ex:def ;
-    sdc:dataCatalog ex:fhwiehduwke ;
-    sdc:datasets ex:herrcgre ;
-    sdc:metrics ex:fkrhkqewjewrc ;
-    sdc:qualityMeasurements ex:sfasdggfvrln ;
-    sdc:series ex:abcde .
+    ns1:dataCatalog ex:fhwiehduwke ;
+    ns1:datasets ex:herrcgre ;
+    ns1:metrics ex:fkrhkqewjewrc ;
+    ns1:qualityMeasurements ex:sfasdggfvrln ;
+    ns1:series ex:abcde .
 

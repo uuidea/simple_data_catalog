@@ -1,8 +1,8 @@
-# Example Data Catalog
+= Example Data Catalog
 
 This is the description of this data catalog
 
-## Overview
+== Overview
 
 [cols= "1,1"]
 |===

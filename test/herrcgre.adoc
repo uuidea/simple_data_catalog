@@ -33,7 +33,10 @@ some description
 |some distribution title
 |ttl
 |4.1.1
-|2025-12-31
+a|
+* 2025-12-31
+** something else
+
 |link:www.example.com/some-distribution-title.ttl[www.example.com/some-distribution-title.ttl]
 
 |===
@@ -64,3 +67,16 @@ some description
 |===
 
 === Supply Chain Analysis
+
+|===
+| First Cell
+| Second Cell
+
+| Second Row, first cell
+a| Cell with a list
+
+* One
+* two
+* three
+|===
+

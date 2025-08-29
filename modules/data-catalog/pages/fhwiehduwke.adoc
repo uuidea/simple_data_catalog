@@ -1,0 +1,23 @@
+= test data catalog
+
+== Description 
+ 
+a test data catalog created to validate the schema
+== Overview 
+
+== Overview
+ 
+[cols="1,1"]
+|=== 
+a| Title
+a| test data catalog
+a| Publisher
+a| my name
+a| License
+a| cc-by 4.0
+|===
+ 
+== Datasets by Theme 
+
+image::modules/data-catalog/images/wordcloud.svg[Theme Word Cloud]
+
