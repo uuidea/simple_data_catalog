@@ -103,12 +103,12 @@ def was_derived_from_graphic(catalog_graph: Graph, uri: URIRef):
         mermaid_lines.append(f"    {identifier} --> {identifier2}")
         
         # Handle indirect wasDerivedFrom relationships
-        wdf_indirect = catalog_graph.objects(i, PROV.wasDerivedFrom)
+        wdf_indirect = catalog_graph.objects(i, PROV.wasDerivedFrom*'+')
         for j in wdf_indirect:
             label_j = str(catalog_graph.value(URIRef(j), DCTERMS.title))
             if label_j == 'None':
                 label_j = str(j).split("#")[1]
-            identifier_j = str(catalog_graph.value(URIRef(j), DCTERMS.identifier))
+            identifier_j = get_id(resource=j, catalog_graph=catalog_graph)
             
             mermaid_lines.append(f"    {identifier_j}[{label_j}]")
             mermaid_lines.append(f"    {identifier2} --> {identifier_j}")
@@ -116,9 +116,7 @@ def was_derived_from_graphic(catalog_graph: Graph, uri: URIRef):
             # Handle reverse relationships
             j_derives_from = catalog_graph.subjects(PROV.wasDerivedFrom, URIRef(j))
             for k in j_derives_from:
-                identifier_k = str(catalog_graph.value(URIRef(k), DCTERMS.identifier))
-                if identifier_k == 'None':
-                    identifier_k = str(k).split('#')[1]
+                identifier_k = get_id(resource=k, catalog_graph=catalog_graph)
                 mermaid_lines.append(f"    {identifier_k}[{identifier_k}]")
                 mermaid_lines.append(f"    {identifier_k} --> {identifier_j}")
 
