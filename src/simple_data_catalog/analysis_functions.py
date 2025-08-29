@@ -150,7 +150,7 @@ def create_theme_word_cloud(catalog_graph: Graph, output_dir: str):
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     cloud_file_path= output_dir+ "wordcloud.svg"
-    path = pathlib.Path("docs/figures/")
+    path = pathlib.Path(cloud_file_path)
     path.mkdir(parents=True, exist_ok=True)
     plt.savefig(cloud_file_path)
     return cloud_file_path
