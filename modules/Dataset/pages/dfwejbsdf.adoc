@@ -28,3 +28,14 @@ graph TD
     dfwejbsdf[test lineage dataset]
 
 ----
+
+=== Supply Chain Analysis
+
+[source, mermaid]
+---- 
+pie
+    title Input Datasets Quality Measurements
+    "with quality measurements" : 0
+    "without quality measurements" : 0
+----
+

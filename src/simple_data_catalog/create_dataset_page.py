@@ -1,7 +1,7 @@
 from rdflib import Graph, URIRef, DCAT, RDF
-from page_creation_functions import write_file, get_title, get_description
-from create_metadata_table import create_metadata_table
-from analysis_functions import was_derived_from_graphic
+from simple_data_catalog.page_creation_functions import write_file, get_title, get_description
+from simple_data_catalog.create_metadata_table import create_metadata_table
+from simple_data_catalog.analysis_functions import was_derived_from_graphic, supply_chain_analysis
 def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     adoc_str= str()
 
@@ -34,7 +34,14 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     adoc_str= adoc_str + was_derived_from_graphic(catalog_graph=catalog_graph,
                               uri=dataset)
 
+
+    ## add sypply chain analysis
+
+    adoc_str += supply_chain_analysis(catalog_graph=catalog_graph, dataset_uri=dataset)
     ## write file 
+
+
+
 
     write_file(adoc_str=adoc_str, resource=dataset, output_dir='modules/Dataset/pages')
 
