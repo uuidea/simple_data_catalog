@@ -26,6 +26,14 @@ ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:value "0.9"^^xsd:float ;
     prov:generatedAtTime "2025-04-22"^^xsd:date .
 
+
+ex:gksurtnfhslfg a dqv:QualityMeasurement ;
+    dqv:computedOn ex:dfwejbsdf ;
+    dqv:isMeasurementOf ex:fkrhkqewjewrc ;
+    dqv:value "0.9"^^xsd:float ;
+    prov:generatedAtTime "2025-04-22"^^xsd:date .
+
+
 ex:abc a skos:Concept ;
     skos:altLabel "juice" ;
     skos:definition "energy is energy" ;

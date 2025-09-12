@@ -1,0 +1,5 @@
+name: data-catalog
+title: Data Catalog
+version: ~
+nav:
+- modules/nav.adoc

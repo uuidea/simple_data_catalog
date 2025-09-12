@@ -1,15 +1,20 @@
-from create_catalog_page import create_catalog_page
-from create_dataset_page import create_dataset_page
+from simple_data_catalog.create_catalog_page import create_catalog_page
+from simple_data_catalog.create_dataset_page import create_dataset_page
 from rdflib import Graph, RDF, DCAT
 
 
 def create_data_catalog(catalog_graph: Graph):
     create_catalog_page(catalog_graph)
 
+    ## add to nav page
+
+    ## innitiate nav header for datasets
+
     
     for dataset in catalog_graph.subjects(RDF.type, DCAT.Dataset):
         print(dataset)
         create_dataset_page(dataset=dataset, catalog_graph=catalog_graph )
+        ## add dataset to nave page
 
 
 
