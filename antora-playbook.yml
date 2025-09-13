@@ -12,6 +12,19 @@ ui:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
 
+asciidoc:
+  attributes:
+    page-pagination: ''
+    experimental: ''
+    kroki-fetch-diagram: false # Render images in browser. Makes building much faster which is convenient for local development.
+    kroki-default-format: svg@
+    kroki-server-url: http://fruit.ritger.nl:9000 
+  extensions:
+    - asciidoctor-kroki
+    - '@djencks/asciidoctor-mathjax'
+output:
+  clean: true
+  dir: ./docs
 
 antora:
   extensions:
