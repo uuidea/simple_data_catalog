@@ -28,4 +28,4 @@ output:
 
 antora:
   extensions:
-  - require: '@antora/lunr-extension'
+  - require: '@antora/lunr-extension' # support search
