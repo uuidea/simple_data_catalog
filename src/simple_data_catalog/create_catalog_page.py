@@ -14,6 +14,8 @@ import re
 def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-catalog/pages'):
     adoc_str= str()
 
+    os.remove('modules/nav.adoc')
+
     catalog=None
     for datacat in catalog_graph.subjects(RDF.type, DCAT.Catalog):
         catalog=datacat
@@ -39,7 +41,7 @@ def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-cat
     
     create_theme_word_cloud(catalog_graph=catalog_graph, 
                                              output_dir='modules/data-catalog/images/')
-    adoc_str= adoc_str + "image::../images/wordcloud.svg" + "[Theme Word Cloud]\n\n"
+    adoc_str= adoc_str + "image:data-catalog/images/wordcloud.svg" + "[Theme Word Cloud]\n\n"
     # Write the adoc_str to a file
     write_file(adoc_str=adoc_str, resource=catalog, output_dir=output_dir)
 

@@ -1,6 +1,7 @@
 from simple_data_catalog.create_catalog_page import create_catalog_page
 from simple_data_catalog.create_dataset_page import create_dataset_page
-from rdflib import Graph, RDF, DCAT
+from simple_data_catalog.create_concept_page import create_concept_page
+from rdflib import Graph, RDF, DCAT, SKOS
 
 
 def create_data_catalog(catalog_graph: Graph):
@@ -15,6 +16,10 @@ def create_data_catalog(catalog_graph: Graph):
         print(dataset)
         create_dataset_page(dataset=dataset, catalog_graph=catalog_graph )
         ## add dataset to nave page
+
+    for concept in catalog_graph.subjects(RDF.type, SKOS.Concept):
+        print(concept)
+        create_concept_page(concept=concept,catalog_graph=catalog_graph)
 
 
 

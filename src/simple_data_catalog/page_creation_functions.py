@@ -25,8 +25,11 @@ def write_file(adoc_str:str, resource: URIRef, output_dir: str)->str:
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w') as f:
         f.write(adoc_str)
-        
-    add_to_nav(output_dir, file_name=file_name)
+
+    print(output_dir)
+    print(file_name)
+    add_to_nav(output_dir = output_dir, file_name=file_name)
+
 
     
 def get_title(subject: URIRef, graph: Graph)->str:
@@ -57,12 +60,19 @@ def add_to_nav(file_name: str, output_dir: str):
     """Add a new page to the navigation file (nav.adoc)"""
     # Determine the relative path for the nav entry
     # Assuming the structure: modules/Dataset/pages/...
-    if 'modules/Dataset/pages/' in output_dir:
+    if 'modules/dataset/pages/' in output_dir:
         # Extract the dataset name from the path
-        nav_entry = f"*** xref::Dataset/pages/{file_name}.adoc[{file_name}]\n"
+        nav_entry = f"*** xref:pages/{file_name}.adoc[{file_name}]\n\n"
+
+    elif 'modules/data-catalog/pages/' in output_dir:  
+        nav_entry = "" # data catalog is already innitiated      
+    if 'modules/concept/pages/' in output_dir:
+        # Extract the dataset name from the path
+        nav_entry = f"*** xref:pages/{file_name}.adoc[{file_name}]\n\n"    
     else:
+        linkstr= output_dir+"/"+ file_name
         # For catalog pages or other types, use a more general approach
-        nav_entry = f"*** xref::{file_name}.adoc[{file_name}]\n"
+        nav_entry = f"*** xref::{file_name}.adoc[{file_name}]\n\n"
     
     nav_file_path = 'modules/nav.adoc'
     
@@ -72,7 +82,7 @@ def add_to_nav(file_name: str, output_dir: str):
             content = f.read()
         
         # Find where to insert the new entry (after "Datasets")
-        datasets_section_pattern = r'(\*\* Datasets\s*\n)(.*?)(\n\*\*|\Z)'
+        datasets_section_pattern = r'(\*\* datasets\s*\n)(.*?)(\n\*\*|\Z)'
         match = re.search(datasets_section_pattern, content, re.DOTALL)
         
         if match:
@@ -90,7 +100,7 @@ def add_to_nav(file_name: str, output_dir: str):
         with open(nav_file_path, 'w') as f:
             f.write(f"""[.truncate]
 * Data Catalog
-** xref::data-catalog/pages/fhwiehduwke.adoc[Index]
+** xref:data-catalog/pages/fhwiehduwke.adoc[Index]
 ** Datasets
 *** {nav_entry.strip()}
 """)          

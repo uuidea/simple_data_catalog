@@ -18,5 +18,5 @@ a| cc-by 4.0
  
 == Datasets by Theme 
 
-image::wordcloud.svg[Theme Word Cloud]
+image:data-catalog/images/wordcloud.svg[Theme Word Cloud]
 

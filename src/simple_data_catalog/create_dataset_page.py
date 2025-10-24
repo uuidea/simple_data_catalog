@@ -43,7 +43,7 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
 
 
 
-    write_file(adoc_str=adoc_str, resource=dataset, output_dir='modules/Dataset/pages')
+    write_file(adoc_str=adoc_str, resource=dataset, output_dir='modules/dataset/pages')
 
     return 1
     

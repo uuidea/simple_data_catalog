@@ -1,5 +1,15 @@
 [.truncate]
 * Data Catalog
-** xref::data-catalog/pages/fhwiehduwke.adoc[Index]
+** xref:data-catalog/pages/fhwiehduwke.adoc[Index]
 ** Datasets
-*** xref::Dataset/pages/.adoc[`` (root)]
+*** *** xref::fhwiehduwke.adoc[fhwiehduwke]
+*** xref::herrcgre.adoc[herrcgre]
+
+*** xref::dfwejbsdf.adoc[dfwejbsdf]
+
+*** xref::abc.adoc[abc]
+
+*** xref::bcd.adoc[bcd]
+
+*** xref::def.adoc[def]
+
