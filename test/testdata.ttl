@@ -55,7 +55,7 @@ ex:def a skos:Concept ;
     skos:prefLabel "data" .
 
 ex:fkrhkqewjewrc a dqv:Metric ;
-    skos:definition "an example of a data quality metric" ;
+    skos:definition "an examiple of a data quality metric" ;
     skos:prefLabel "example metric" ;
     dqv:expectedDataType xsd:float ;
     dqv:inDimension "Completeness" .

@@ -1,16 +1,10 @@
-= None
+= test
 
-== Description 
- 
-None
+test is just for testing
 
-== Overview 
+== Alternative labels 
 
-== Overview
- 
-[cols="1,1"]
-|=== 
-|===
- 
+
+
 == Concept Hierarchy 
 

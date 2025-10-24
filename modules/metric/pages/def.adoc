@@ -1,0 +1,5 @@
+= data
+
+data is plural of datum
+
+Expected datatype: None

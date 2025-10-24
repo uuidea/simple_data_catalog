@@ -1,5 +1,5 @@
 import pydantic
-from rdflib import Graph, URIRef, RDF, DCAT, DCTERMS
+from rdflib import Graph, URIRef, RDF, DCAT, DCTERMS, SKOS
 
 from pydantic import BaseModel, Field
 from typing import List, Optional
@@ -30,7 +30,20 @@ def write_file(adoc_str:str, resource: URIRef, output_dir: str)->str:
     print(file_name)
     add_to_nav(output_dir = output_dir, file_name=file_name)
 
+def get_prefLabel(subject: URIRef, graph: Graph)->str:
+    prefLabel= str(graph.value(subject,SKOS.prefLabel))
 
+    return prefLabel
+
+def get_altLabel(subject: URIRef, graph: Graph)->str:
+    altLabel= str(graph.value(subject,SKOS.altLabel))
+    
+    return altLabel
+
+def get_definition(subject: URIRef, graph: Graph)->str:
+    definition= str(graph.value(subject,SKOS.definition))
+    print(definition)
+    return definition
     
 def get_title(subject: URIRef, graph: Graph)->str:
     title= graph.value(subject,DCTERMS.title)
