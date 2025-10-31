@@ -1,4 +1,4 @@
-= test lineage dataset
+= yet another dataset
 
 == Description 
 
@@ -6,7 +6,6 @@ None
 
 == Themes 
 
-xref:concept:abc.adoc[energy]
 xref:concept:bcd.adoc[test ing]
 
 == Overview 
@@ -14,26 +13,16 @@ xref:concept:bcd.adoc[test ing]
 [cols="1,1"]
 |=== 
 a| Title
-a| test lineage dataset
+a| yet another dataset
 a| Publisher
-a| my name
+a| my name is bob
 a| License
 a| cc-by 4.0
 |===
  
 == Data quality 
 
-[cols="1,1,1,1"]
-|=== 
-a| *Metric*
-a| *Value*
-a| *Time of evaluation*
-a| *Dimension*
-a| xref:metric:fkrhkqewjewrc.adoc[example metric]
-a| 0.9
-a| 2025-04-22
-a| Completeness
-|===
+No data quality measurements are available
 
 == Data Lineage 
 
@@ -42,7 +31,7 @@ a| Completeness
 [source, mermaid]
 ---- 
 graph TD
-    dfwejbsdf[test lineage dataset]
+    djemchweer[yet another dataset]
 
 ----
 

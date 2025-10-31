@@ -94,6 +94,22 @@ ex:dfwejbsdf a dcat:Dataset ;
             time:hasBeginning "2025-01-01"^^xsd:date ;
             time:hasEnd "2025-12-31"^^xsd:date ] .
 
+ex:djemchweer a dcat:Dataset ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name is bob" ] ;
+    dcterms:title "yet another dataset" ;
+    vcard:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "my.name@example.eu" ] ;
+    adms:status "production" ;
+    dcat:inSeries ex:abcde ;
+    dcat:theme ex:bcd;
+    dcat:version [ a dcterms:PeriodOfTime ;
+            time:hasBeginning "2025-01-01"^^xsd:date ;
+            time:hasEnd "2025-12-31"^^xsd:date ] .
+
+
 
 [] a ns1:Container ;
     ns1:concepts ex:abc,
