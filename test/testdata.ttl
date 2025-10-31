@@ -47,7 +47,7 @@ ex:abcde a dcat:DatasetSeries ;
 ex:bcd a skos:Concept ;
     skos:altLabel "practice" ;
     skos:definition "test is just for testing" ;
-    skos:prefLabel "test" .
+    skos:prefLabel "test ing" .
 
 ex:def a skos:Concept ;
     skos:altLabel "information (leave a comment ;-))" ;
@@ -89,8 +89,7 @@ ex:dfwejbsdf a dcat:Dataset ;
     adms:status "draft" ;
     dcat:inSeries ex:abcde ;
     dcat:theme ex:abc,
-        ex:bcd,
-        ex:def ;
+        ex:bcd;
     dcat:version [ a dcterms:PeriodOfTime ;
             time:hasBeginning "2025-01-01"^^xsd:date ;
             time:hasEnd "2025-12-31"^^xsd:date ] .

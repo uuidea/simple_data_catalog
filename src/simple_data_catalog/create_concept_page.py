@@ -60,7 +60,6 @@ def create_concept_page(concept: URIRef, catalog_graph: Graph):
     
     for dataset in catalog_graph.subjects(RDF.type, DCAT.Dataset):
         if concept in catalog_graph.objects(dataset, DCAT.theme):
-            dataset_title = get_title(subject=dataset, graph=catalog_graph)
             link_str = create_local_link(resource=dataset, catalog_graph=catalog_graph)
             dataset_table_entries.append(f"{link_str}")
     

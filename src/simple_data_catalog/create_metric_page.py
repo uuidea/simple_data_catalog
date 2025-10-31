@@ -1,11 +1,10 @@
 import pydantic
 from rdflib import Namespace, Graph, URIRef, RDF, DCAT, DCTERMS, SKOS
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List, Optional
-from model.datamodel import DataCatalog
-from page_creation_functions import write_file, get_title, get_description, get_prefLabel, get_definition
-
+from simple_data_catalog.page_creation_functions import write_file, get_prefLabel, get_definition, create_local_link 
+from simple_data_catalog.create_adoc_table import create_adoc_table
 
 # from create_metadata_table import create_metadata_table
 
@@ -49,6 +48,22 @@ def create_metric_page(metric: URIRef, catalog_graph: Graph):
     datatype= catalog_graph.value(metric,DQV.expectedDataType)
     print(datatype)
     adoc_str += "Expected datatype: " + str(datatype)
+
+
+    # Add datasets with quality measurements using this metric
+    datasets = []
+    for measurement in catalog_graph.subjects(RDF.type, DQV.QualityMeasurement):
+        if catalog_graph.value(measurement, DQV.isMeasurementOf) == metric:
+            dataset_uri = catalog_graph.value(measurement, DQV.computedOn)
+            dataset_title = create_local_link(resource=dataset_uri, catalog_graph=catalog_graph)
+            datasets.append(dataset_title)
+    if datasets:
+        adoc_str += "\n\nDatasets with quality measurements using this metric:\n" + "\n"
+        adoc_str+= create_adoc_table(datasets, num_cols=1)
+    else:
+        adoc_str += "\n\nNo datasets found with quality measurements using this metric."
+
+
     # write file
     write_file(adoc_str=adoc_str, 
                resource=metric, 
