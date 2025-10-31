@@ -3,7 +3,7 @@ site:
   start_page: data-catalog:data-catalog:fhwiehduwke.adoc
 content:
   sources: 
-  - url: https://uuidea.github.io/simple_data_catalog/
+  - url: . # https://uuidea.github.io/simple_data_catalog/
     branches: main
     start_page: data-catalog:data-catalog:fhwiehduwke.adoc
     
@@ -17,7 +17,7 @@ asciidoc:
     page-pagination: ''
     experimental: ''
     kroki-fetch-diagram: true # Render images in browser. Makes building much faster which is convenient for local development.
-    kroki-default-format: svg@
+    kroki-default-format: png
     kroki-server-url: http://fruit.ritger.nl:9000 
   extensions:
     - asciidoctor-kroki
