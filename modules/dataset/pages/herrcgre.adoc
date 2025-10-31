@@ -1,13 +1,11 @@
 = test dataset
 
 == Description 
- 
+
 None
 
 == Overview 
 
-== Overview
- 
 [cols="1,1"]
 |=== 
 a| Title
@@ -18,6 +16,20 @@ a| License
 a| cc-by 4.0
 |===
  
+== Data quality 
+
+[cols="1,1,1,1"]
+|=== 
+a| *Metric*
+a| *Value*
+a| *Time of evaluation*
+a| *Dimension*
+a| xref:metric:fkrhkqewjewrc.adoc[example metric]
+a| 0.9
+a| 2025-04-22
+a| Completeness
+|===
+
 == Data Lineage 
 
 === Lineage visualized

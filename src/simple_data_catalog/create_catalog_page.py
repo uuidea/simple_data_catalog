@@ -11,10 +11,11 @@ import os
 import re
 
 
-def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-catalog/pages'):
+def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-catalog/pages/'):
     adoc_str= str()
 
-    os.remove('modules/nav.adoc')
+    if os.path.exists('modules/data-catalog/nav.adoc'):
+        os.remove('modules/data-catalog/nav.adoc')
 
     catalog=None
     for datacat in catalog_graph.subjects(RDF.type, DCAT.Catalog):
@@ -25,25 +26,29 @@ def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-cat
     
     # add title
 
-    adoc_str= adoc_str + get_title(catalog, catalog_graph)
+    adoc_str += "= " + get_title(catalog, catalog_graph) + "\n\n"
 
     # add description
-
-    adoc_str= adoc_str+get_description(catalog, catalog_graph)
+ 
+    adoc_str+= "== Description\n\n" + get_description(catalog, catalog_graph)+ "\n\n"
 
     # add metadata overview
 
-    adoc_str= adoc_str+create_metadata_table(catalog_graph=catalog_graph, 
-                                             resource=catalog)
+
+    adoc_str+= "== Overview \n\n" + create_metadata_table(catalog_graph=catalog_graph, 
+                                             resource=catalog)  + "\n\n"
     # add Datasets by theme
 
     adoc_str= adoc_str+ "== Datasets by Theme \n\n"
     
     create_theme_word_cloud(catalog_graph=catalog_graph, 
                                              output_dir='modules/data-catalog/images/')
-    adoc_str= adoc_str + "image:data-catalog/images/wordcloud.svg" + "[Theme Word Cloud]\n\n"
+    adoc_str= adoc_str + "image:wordcloud.svg" + "[Theme Word Cloud]\n\n"
     # Write the adoc_str to a file
-    write_file(adoc_str=adoc_str, resource=catalog, output_dir=output_dir)
+    write_file(adoc_str=adoc_str, 
+               resource=catalog, 
+               output_dir=output_dir, 
+               catalog_graph= catalog_graph)
 
 
 if __name__ == "__main__":

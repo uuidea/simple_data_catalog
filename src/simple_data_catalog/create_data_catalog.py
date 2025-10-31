@@ -8,25 +8,19 @@ from rdflib import Graph, RDF, DCAT, SKOS, Namespace
 def create_data_catalog(catalog_graph: Graph):
     create_catalog_page(catalog_graph)
 
-    ## add to nav page
-
-    ## innitiate nav header for datasets
-
     DQV = Namespace("http://www.w3.org/ns/dqv#")
 
 
     for dataset in catalog_graph.subjects(RDF.type, DCAT.Dataset):
-        print(dataset)
         create_dataset_page(dataset=dataset, catalog_graph=catalog_graph )
         ## add dataset to nave page
 
     for concept in catalog_graph.subjects(RDF.type, SKOS.Concept):
-        print(concept)
+
         create_concept_page(concept=concept,catalog_graph=catalog_graph)
 
     for metric in catalog_graph.subjects(RDF.type, DQV.Metric):
-        print(metric)
-        create_metric_page(metric=concept,catalog_graph=catalog_graph)
+        create_metric_page(metric=metric,catalog_graph=catalog_graph)
 
 if __name__ == "__main__":
     catalog_graph=Graph()

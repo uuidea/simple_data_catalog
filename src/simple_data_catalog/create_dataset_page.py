@@ -2,17 +2,16 @@ from rdflib import Graph, URIRef, DCAT, RDF
 from simple_data_catalog.page_creation_functions import write_file, get_title, get_description
 from simple_data_catalog.create_metadata_table import create_metadata_table
 from simple_data_catalog.analysis_functions import was_derived_from_graphic, supply_chain_analysis
+from simple_data_catalog.create_data_quality_table import create_data_quality_table
 def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     adoc_str= str()
 
     # add title
-    adoc_str= adoc_str+get_title(subject=dataset, 
-                                 graph= catalog_graph)
-
+    adoc_str += "= " + get_title(dataset, catalog_graph) + "\n\n"
     # add descrioption
 
-    adoc_str= adoc_str + get_description(subject= dataset,
-                                         graph=catalog_graph)
+    adoc_str += "== Description \n\n"+ get_description(subject= dataset,
+                                         graph=catalog_graph) +"\n\n"
     
 
     # add metadata overview
@@ -20,12 +19,18 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     adoc_str= adoc_str + "== Overview \n\n"
     adoc_str= adoc_str+create_metadata_table(catalog_graph=catalog_graph,  
                                              resource=dataset)
+    
+    # add data quality table 
+
+    adoc_str += "== Data quality \n\n"
+
+    adoc_str+= create_data_quality_table(catalog_graph=catalog_graph, resource=dataset)
+
       
     # add data Lineage
 
     adoc_str= adoc_str+"== Data Lineage \n\n"
 
-    ## add data Lineage Table
 
     ## add data lineage diagram
 
@@ -43,7 +48,10 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
 
 
 
-    write_file(adoc_str=adoc_str, resource=dataset, output_dir='modules/dataset/pages')
+    write_file(adoc_str=adoc_str, 
+               resource=dataset, 
+               output_dir='modules/dataset/pages/', 
+               catalog_graph= catalog_graph)
 
     return 1
     

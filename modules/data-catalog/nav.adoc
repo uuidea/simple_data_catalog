@@ -1,0 +1,17 @@
+[.truncate]
+* Data Catalog
+** xref:data-catalog:fhwiehduwke.adoc[Index]
+** Datasets
+*** 
+*** xref:dataset:herrcgre.adoc[herrcgre]
+
+*** xref:dataset:dfwejbsdf.adoc[dfwejbsdf]
+
+*** xref:concept:abc.adoc[abc]
+
+*** xref:concept:bcd.adoc[bcd]
+
+*** xref:concept:def.adoc[def]
+
+*** xref:metric:fkrhkqewjewrc.adoc[fkrhkqewjewrc]
+

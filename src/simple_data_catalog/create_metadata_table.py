@@ -57,7 +57,7 @@ def create_metadata_table(catalog_graph: Graph, resource: URIRef):
 
     metadata_table= create_adoc_table(entries=metadata, num_cols=2)
 
-    metadata_table_str= "== Overview\n \n" + metadata_table +"\n \n"
+    metadata_table_str= metadata_table +"\n \n"
 
     return metadata_table_str
 # Example usage

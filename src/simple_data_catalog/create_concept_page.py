@@ -9,64 +9,67 @@ from model.datamodel import DataCatalog
 import os
 import re
 
-from create_metadata_table import create_metadata_table
-from analysis_functions import create_theme_word_cloud
-from page_creation_functions import write_file, get_title, get_description, get_prefLabel, get_definition
-
+from simple_data_catalog.create_metadata_table import create_metadata_table
+from simple_data_catalog.analysis_functions import create_theme_word_cloud
+from simple_data_catalog.page_creation_functions import write_file, get_title, create_local_link, get_prefLabel, get_definition
+from simple_data_catalog.create_adoc_table import create_adoc_table
 
 
 def create_concept_page(concept: URIRef, catalog_graph: Graph):
     adoc_str = str()
 
     # add title
-    adoc_str = adoc_str +"= " + get_prefLabel(subject=concept, 
-                                    graph=catalog_graph) + "\n\n"
+    adoc_str += "= " + get_prefLabel(subject=concept, graph=catalog_graph) + "\n\n"
 
     # add description
-    adoc_str = adoc_str + get_definition(subject=concept,
-                                          graph=catalog_graph) + "\n\n"
+    adoc_str += get_definition(subject=concept, graph=catalog_graph) + "\n\n"
     
     # add alt labels
-
     adoc_str += "== Alternative labels \n\n"
+    for label in catalog_graph.objects(concept, SKOS.altLabel):
+        adoc_str += "- " + str(label) + "\n"
 
+    adoc_str += "\n"  
     
-
-    adoc_str+= "\n\n"  
     # add concept hierarchy
-    adoc_str = adoc_str + "== Concept Hierarchy \n\n"
+    adoc_str += "== Concept Hierarchy \n\n"
+    hierarchy = []
+    current_concept = concept
     
-    # # add broader concepts
-    # broader_concepts = list(catalog_graph.objects(subject=concept, predicate=SKOS.broader))
-    # if broader_concepts:
-    #     adoc_str += "Broader Concepts:\n\n"
-    #     for broader in broader_concepts:
-    #         adoc_str += f"- {get_prefLabel(broader, catalog_graph)} ({broader})\n"
-    #     adoc_str += "\n"
+    while True:
+        narrower_concepts = list(catalog_graph.objects(current_concept, SKOS.narrower))
+        
+        if len(narrower_concepts) == 0:
+            break
+        
+        next_concept = None
+        for narrower in narrower_concepts:
+            hierarchy.append(str(narrower))
+            next_concept = narrower
+            break
+        
+        current_concept = next_concept
+    
+    adoc_str += "hierarchy: " + ", ".join(hierarchy) + "\n\n"
 
-    # # add narrower concepts
-    # narrower_concepts = list(catalog_graph.objects(subject=concept, predicate=SKOS.narrower))
-    # if narrower_concepts:
-    #     adoc_str += "Narrower Concepts:\n\n"
-    #     for narrower in narrower_concepts:
-    #         adoc_str += f"- {get_label(narrower, catalog_graph)} ({narrower})\n"
-    #     adoc_str += "\n"
 
-    # # add related concepts
-    # related_concepts = list(catalog_graph.objects(subject=concept, predicate=SKOS.related))
-    # if related_concepts:
-    #     adoc_str += "Related Concepts:\n\n"
-    #     for related in related_concepts:
-    #         adoc_str += f"- {get_label(related, catalog_graph)} ({related})\n"
-    #     adoc_str += "\n"
+    # create a table of all the datasets that have this concept as theme
 
-    # # add concept scheme
-    # concept_scheme = list(catalog_graph.objects(subject=concept, predicate=SKOS.inScheme))
-    # if concept_scheme:
-    #     adoc_str += f"Part of Concept Scheme: {get_label(concept_scheme[0], catalog_graph)} ({concept_scheme[0]})\n\n"
+    adoc_str += "== Datasets with this theme \n\n"
+    dataset_table_entries = []
+    
+    for dataset in catalog_graph.subjects(RDF.type, DCAT.Dataset):
+        if concept in catalog_graph.objects(dataset, DCAT.theme):
+            dataset_title = get_title(subject=dataset, graph=catalog_graph)
+            link_str = create_local_link(resource=dataset, catalog_graph=catalog_graph)
+            dataset_table_entries.append(f"{link_str}")
+    
+    adoc_str += create_adoc_table(entries=dataset_table_entries, num_cols=1)
 
     # write file 
-    write_file(adoc_str=adoc_str, resource=concept, output_dir='modules/concept/pages')
+    write_file(adoc_str=adoc_str, 
+               resource=concept, 
+               output_dir='modules/concept/pages/', 
+               catalog_graph= catalog_graph)
 
     return 1
-

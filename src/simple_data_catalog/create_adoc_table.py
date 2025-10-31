@@ -1,4 +1,4 @@
-def create_adoc_table(entries: list, num_cols: int):
+def create_adoc_table(entries: list, num_cols: int) -> str:
     """
     Creates an AsciiDoc table string from a list of entries.
 
@@ -9,18 +9,17 @@ def create_adoc_table(entries: list, num_cols: int):
     Returns:
         str: An AsciiDoc table string. Returns "table dimensions inconsistent" if the number of entries is not divisible by the number of columns.
     """
-    if len(entries)%num_cols!= 0:
+    if len(entries) % num_cols != 0:
         return "table dimensions inconsistent"
 
     table_str = ""
-    col_specs = "[cols="+"\""+",".join(["1"] * num_cols)+"\"]\n"
+    col_specs = "[cols=" + '"' + ",".join(["1"] * num_cols) + '"]\n'
     header = "|=== \n"
 
-    table_str += col_specs+ header
+    table_str += col_specs + header
 
-   
     for entry in entries:
-        table_str=table_str + "a| "+ str(entry) + "\n" # a is to support lists
-        
-    table_str= table_str + "|==="
+        table_str = table_str + "a| " + str(entry) + "\n"  # a is to support lists
+
+    table_str = table_str + "|==="
     return table_str

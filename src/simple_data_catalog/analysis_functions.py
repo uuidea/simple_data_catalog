@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import pathlib
-from page_creation_functions import get_id
+from simple_data_catalog.page_creation_functions import get_id
 
 
 def was_derived_from_graphic(catalog_graph: Graph, uri: URIRef):

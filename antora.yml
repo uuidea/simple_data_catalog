@@ -2,4 +2,4 @@ name: data-catalog
 title: Data Catalog
 version: ~
 nav:
-- modules/nav.adoc
+- modules/data-catalog/nav.adoc

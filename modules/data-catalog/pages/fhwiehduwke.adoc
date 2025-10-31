@@ -1,11 +1,11 @@
 = test data catalog
 
-== Description 
- 
+== Description
+
 a test data catalog created to validate the schema
 
-== Overview
- 
+== Overview 
+
 [cols="1,1"]
 |=== 
 a| Title
@@ -16,7 +16,9 @@ a| License
 a| cc-by 4.0
 |===
  
+
+
 == Datasets by Theme 
 
-image:data-catalog/images/wordcloud.svg[Theme Word Cloud]
+image:wordcloud.svg[Theme Word Cloud]
 
