@@ -6,7 +6,7 @@ None
 
 == Themes 
 
-xref:concept:abc.adoc[energy]
+xref:concept:abc.adoc[[.underline]#energy#]
 xref:concept:bcd.adoc[test ing]
 
 == Overview 
