@@ -3,7 +3,7 @@ site:
   start_page: data-catalog:data-catalog:fhwiehduwke.adoc
 content:
   sources: 
-  - url: https://uuidea.github.io/simple_data_catalog/
+  - url: . # https://uuidea.github.io/simple_data_catalog/
     branches: main
     start_page: data-catalog:data-catalog:fhwiehduwke.adoc
     
