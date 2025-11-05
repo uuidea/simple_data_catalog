@@ -16,7 +16,7 @@ asciidoc:
   attributes:
     page-pagination: ''
     experimental: ''
-    kroki-fetch-diagram: true # Render images in browser. Makes building much faster which is convenient for local development.
+    kroki-fetch-diagram: false # Render images in browser. Makes building much faster which is convenient for local development.
     kroki-default-format: png
     # kroki-server-url: http://fruit.ritger.nl:9000 
   extensions:
