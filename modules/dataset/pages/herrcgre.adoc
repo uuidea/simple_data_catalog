@@ -40,7 +40,7 @@ a| Completeness
 
 === Lineage visualized
 
-[source, mermaid]
+[mermaid, lineage, svg]
 ---- 
 graph TD
     herrcgre[test dataset]
@@ -51,7 +51,7 @@ graph TD
 
 === Supply Chain Analysis
 
-[source, mermaid]
+[mermaid, supply-chain-analysis, svg]
 ---- 
 pie
     title Input Datasets Quality Measurements

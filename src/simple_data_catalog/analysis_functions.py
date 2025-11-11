@@ -55,7 +55,7 @@ def was_derived_from_graphic(catalog_graph: Graph, uri: URIRef):
                 mermaid_lines.append(f"    {identifier_k} --> {identifier_j}")
 
     diagram_str= "=== Lineage visualized\n\n"
-    diagram_str+= "[source, mermaid]\n---- \n" 
+    diagram_str+= "[mermaid, lineage, svg]\n---- \n" 
     diagram_str+=('\n'.join(mermaid_lines)+ "\n\n")
     diagram_str+="----\n\n"
 
@@ -86,7 +86,7 @@ def supply_chain_analysis(catalog_graph=Graph, dataset_uri= URIRef):
 
     # Create mermaid pie chart
     mermaid_chart= "=== Supply Chain Analysis\n\n"
-    mermaid_chart+= "[source, mermaid]\n---- \n" 
+    mermaid_chart+= "[mermaid, supply-chain-analysis, svg]\n---- \n" 
 
     mermaid_chart += f"""pie
     title Input Datasets Quality Measurements

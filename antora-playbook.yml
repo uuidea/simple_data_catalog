@@ -18,7 +18,7 @@ asciidoc:
     experimental: ''
     kroki-fetch-diagram: true # Render images in browser. Makes building much faster which is convenient for local development.
     kroki-default-format: svg@
-    # kroki-server-url: http://fruit.ritger.nl:9000 
+    kroki-server-url: http://kroki.uuidea.eu:8000/ 
   extensions:
     - asciidoctor-kroki
     - '@djencks/asciidoctor-mathjax'

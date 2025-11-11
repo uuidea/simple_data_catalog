@@ -28,7 +28,7 @@ No data quality measurements are available
 
 === Lineage visualized
 
-[source, mermaid]
+[mermaid, lineage, svg]
 ---- 
 graph TD
     djemchweer[yet another dataset]
@@ -37,7 +37,7 @@ graph TD
 
 === Supply Chain Analysis
 
-[source, mermaid]
+[mermaid, supply-chain-analysis, svg]
 ---- 
 pie
     title Input Datasets Quality Measurements
