@@ -37,7 +37,7 @@ jobs:
       - name: Generate AsciiDoc from YAML
         run: python -c "from simple_data_catalog.parse_yaml import parse_yaml_to_graph; from simple_data_catalog.create_data_catalog import create_data_catalog; catalog_graph = parse_yaml_to_graph('test/testcatalog.yaml'); create_data_catalog(catalog_graph)"
       - name: Build Antora site
-        run: npx antora antora-playbook.yml
+        run: npm exec antora antora-playbook.yml
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
