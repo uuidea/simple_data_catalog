@@ -5,7 +5,7 @@
 *** 
 *** xref:dataset:test-dataset.adoc[test-dataset]
 
-*** xref:concept:test.adoc[test]
-
 *** xref:concept:example.adoc[example]
+
+*** xref:concept:test.adoc[test]
 
