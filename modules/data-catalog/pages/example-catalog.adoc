@@ -1,0 +1,18 @@
+= Example Data Catalog
+
+== Description
+
+A sample data catalog for testing
+
+== Overview 
+
+[cols="1,1"]
+|=== 
+|===
+ 
+
+
+== Datasets by Theme 
+
+image:wordcloud.svg[Theme Word Cloud]
+

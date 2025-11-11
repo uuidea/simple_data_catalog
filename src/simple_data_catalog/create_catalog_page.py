@@ -3,10 +3,10 @@ from rdflib import Graph, URIRef, RDF, DCAT, DCTERMS
 
 from pydantic import BaseModel, Field
 from typing import List, Optional
-from model.datamodel import DataCatalog
-from create_metadata_table import create_metadata_table
-from analysis_functions import create_theme_word_cloud
-from page_creation_functions import write_file, get_title, get_description
+from simple_data_catalog.model.datamodel import DataCatalog
+from simple_data_catalog.create_metadata_table import create_metadata_table
+from simple_data_catalog.analysis_functions import create_theme_word_cloud
+from simple_data_catalog.page_creation_functions import write_file, get_title, get_description
 import os
 import re
 

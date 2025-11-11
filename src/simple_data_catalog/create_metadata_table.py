@@ -1,5 +1,5 @@
 from rdflib import Graph, URIRef, Namespace, Literal, DCAT, DCTERMS, BNode, FOAF
-from create_adoc_table import create_adoc_table
+from simple_data_catalog.create_adoc_table import create_adoc_table
 
 dcat = Namespace("http://www.w3.org/ns/dcat#")
 dcterms = Namespace("http://purl.org/dc/terms/")

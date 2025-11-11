@@ -30,7 +30,8 @@ dependencies = [
     "argparse",
     "pathlib",
     "rich",
-    "dataclasses"
+    "dataclasses",
+    "pyyaml"
 
 ]
 
