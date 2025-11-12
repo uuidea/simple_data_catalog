@@ -1,0 +1,74 @@
+nav.navbar {
+  background: #005f87;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: #002d41 !important;
+}
+
+article.doc code {
+  padding: 0;
+}
+
+.truncate {
+  max-width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+img {
+max-height: 33vh;
+color-scheme: light;
+}
+
+#conceptual-model.imageblock img {
+max-height: 100%;
+}
+
+.nav-symbol {
+    border: none;
+    outline: none;
+    line-height: inherit;
+    padding: 0;
+    position: absolute;
+    height: 1.35em;
+    width: 1.35em;
+    margin-top: -.05em;
+    /* margin-left: -1.35em; */
+    margin-left: -1.0em;
+}
+
+@media screen and (min-width: 1024px) {
+  /*
+  .doc {
+    max-width: 77rem;
+  }
+  */
+
+  nav .nav-list > li {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .75rem;  /* Equal to font-size in TOC. */
+  }
+
+  .toc-menu ul > li {
+    white-space: nowrap;  /* Somehow prevents wrapping at all... Not sure if this is desired. */
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  /*
+  .nav-container {
+    width: 25vw;
+  }
+
+  aside.toc.sidebar {
+    flex-basis: 20rem;
+  }
+  */
+}
