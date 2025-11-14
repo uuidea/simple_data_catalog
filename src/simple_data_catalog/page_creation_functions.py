@@ -35,7 +35,7 @@ def write_file(adoc_str:str, resource: URIRef, output_dir: str, catalog_graph: G
     ## create filename after uri, handle most common prefix separators
 
     file_name= get_id(resource=resource, catalog_graph=catalog_graph)
-
+    print(output_dir)
     output_path = os.path.join(output_dir, file_name+'.adoc')
     # Create directory if it doesn't exist
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -113,22 +113,24 @@ def get_id(
 
 
 def add_to_nav(file_name: str, output_dir: str):
-    print(output_dir)
+    # print(output_dir)
     """Add a new page to the navigation file (nav.adoc)"""
     # Determine the relative path for the nav entry
     # Assuming the structure: modules/Dataset/pages/...
     if 'modules/dataset/pages/' == output_dir:
         # Extract the dataset name from the path
+
         nav_entry = f"*** xref:dataset:{file_name}.adoc[{file_name}]\n\n"
 
     elif 'modules/data-catalog/pages/' == output_dir:  
-        nav_entry = "" # data catalog is already innitiated      
-    elif 'modules/concept/pages/' == output_dir:
-        # Extract the dataset name from the path
-        nav_entry = f"*** xref:concept:{file_name}.adoc[{file_name}]\n\n"    
+        nav_entry = f"* xref:data-catalog:{file_name}.adoc[{file_name}]\n\n" 
+        print("jackpot")
     elif 'modules/metric/pages/' == output_dir:
         # Extract the dataset name from the path
-        nav_entry = f"*** xref:metric:{file_name}.adoc[{file_name}]\n\n"    
+        nav_entry = f"*** xref:metric:{file_name}.adoc[{file_name}]\n\n"
+    elif 'modules/concept/pages/' == output_dir:
+        # Extract the dataset name from the path
+        nav_entry = f"*** xref:concept:{file_name}.adoc[{file_name}]\n\n"         
     else:
         # linkstr= output_dir+"/"+ file_name
         # For catalog pages or other types, use a more general approach
@@ -137,30 +139,41 @@ def add_to_nav(file_name: str, output_dir: str):
     nav_file_path = 'modules/data-catalog/nav.adoc'
     
     try:
-        # Read the existing content
-        with open(nav_file_path, 'r') as f:
-            content = f.read()
+        # # Read the existing content
+        # with open(nav_file_path, 'r') as f:
+        #     content = f.read()
         
-        # Find where to insert the new entry (after "Datasets")
-        datasets_section_pattern = r'(\*\* datasets\s*\n)(.*?)(\n\*\*|\Z)'
-        match = re.search(datasets_section_pattern, content, re.DOTALL)
-        
-        if match:
-            # Insert the new nav entry
-            new_content = content[:match.end(1)] + nav_entry + match.group(2) + content[match.end(0):]
-            with open(nav_file_path, 'w') as f:
-                f.write(new_content)
-        else:
-            # If "Datasets" section not found, append to end
-            with open(nav_file_path, 'a') as f:
+
+        with open(nav_file_path, 'a') as f:
                 f.write(nav_entry)
+        
+        # if match:
+        #     # Insert the new nav entry
+        #     new_content = content[:match.end(1)] + nav_entry + match.group(2) + content[match.end(0):]
+        #     with open(nav_file_path, 'w') as f:
+        #         f.write(new_content)
+        # else:
+        #     # If "Datasets" section not found, append to end
+            # with open(nav_file_path, 'a') as f:
+            #     f.write(nav_entry)
                 
     except FileNotFoundError:
+        ...
         # If nav.adoc doesn't exist, create it with basic structure
-        with open(nav_file_path, 'w') as f:
-            f.write(f"""[.truncate]
-* Data Catalog
-** xref:data-catalog:fhwiehduwke.adoc[Index]
-** Datasets
-*** {nav_entry.strip()}
-""")          
+#         with open(nav_file_path, 'w') as f:
+#             f.write(f"""[.truncate]
+# * Data Catalog
+# ** xref:data-catalog:fhwiehduwke.adoc[Index]
+# ** Datasets
+# *** {nav_entry.strip()}
+# """)          
+            
+
+def create_nav_header(page_type: str):
+
+    nav_file_path = 'modules/data-catalog/nav.adoc'
+    nav_header= f"** {page_type} \n\n"
+
+    with open(nav_file_path, 'a') as f:
+        f.write(nav_header)
+

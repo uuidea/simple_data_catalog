@@ -6,7 +6,7 @@ from typing import List, Optional
 from simple_data_catalog.model.datamodel import DataCatalog
 from simple_data_catalog.create_metadata_table import create_metadata_table
 from simple_data_catalog.analysis_functions import create_theme_word_cloud
-from simple_data_catalog.page_creation_functions import write_file, get_title, get_description
+from simple_data_catalog.page_creation_functions import write_file, get_title, get_description, add_to_nav
 import os
 import re
 
@@ -14,8 +14,7 @@ import re
 def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-catalog/pages/'):
     adoc_str= str()
 
-    if os.path.exists('modules/data-catalog/nav.adoc'):
-        os.remove('modules/data-catalog/nav.adoc')
+
 
     catalog=None
     for datacat in catalog_graph.subjects(RDF.type, DCAT.Catalog):
