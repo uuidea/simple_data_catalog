@@ -16,7 +16,8 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
 ]
-
+[tool.hatch.metadata]
+allow-direct-references= true
 dependencies = [
     "pandas",
     "rdflib",
@@ -31,11 +32,12 @@ dependencies = [
     "pathlib",
     "rich",
     "dataclasses",
-    "pyyaml"
-
+    "pyyaml",
+    "linkml",
+    "simple_data_catalog_model@git+git@github.com:uuidea/simple_data_catalog_model.git"
 ]
 
 
 [project.urls]
-Homepage = "https://github.com/uuidea/SimpleMDDataCatalog"
-Issues = "https://github.com/uuidea/SimpleMDDataCatalog/issues"
+Homepage = "https://github.com/uuidea/simple_data_catalog"
+Issues = "https://github.com/uuidea/simple_data_catalog/issues"
