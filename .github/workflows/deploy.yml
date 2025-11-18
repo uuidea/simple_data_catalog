@@ -1,18 +1,15 @@
 name: Build & Deploy Data Catalog
 
-# Run on pushes to the default branch and on manual dispatch
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
 
-# Permissions required for Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Prevent parallel runs from stepping on each other
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -32,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
 
       # -------------------------------------------------
-      # 2️⃣ Set up Python (for uv, linkml‑convert, etc.)
+      # 2️⃣ Set up Python (uv + pip fallback)
       # -------------------------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -49,23 +46,28 @@ jobs:
           python -m pip install uv
 
       # -------------------------------------------------
-      # 4️⃣ Install Python project dependencies
+      # 4️⃣ Install *project* dependencies + missing tools
       # -------------------------------------------------
       - name: Install Python dependencies
         run: |
+          # 1️⃣ Install everything declared in pyproject.toml (if you use uv)
           if command -v uv >/dev/null; then
             uv sync
           else
             pip install -e .
           fi
 
+          # 2️⃣ Make sure the CLI tools we need are present even if they
+          #    are not listed in pyproject.toml.
+          pip install linkml rdflib  # linkml‑convert + rdflib
+
       # -------------------------------------------------
-      # 5️⃣ Set up Node (required for Antora)
+      # 5️⃣ Set up Node (needed for Antora)
       # -------------------------------------------------
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"          # any LTS version works
+          node-version: "20"
           cache: "npm"
 
       # -------------------------------------------------
@@ -74,6 +76,9 @@ jobs:
       - name: Install Antora
         run: |
           npm install -g @antora/cli @antora/site-generator
+
+          # Add the global npm bin directory to PATH for the rest of the job
+          echo "$(npm root -g)/.bin" >> $GITHUB_PATH
 
       # -------------------------------------------------
       # 7️⃣ Run the catalog‑generation script (creates docs/)
