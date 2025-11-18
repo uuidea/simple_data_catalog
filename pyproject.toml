@@ -33,8 +33,8 @@ dependencies = [
     "rich",
     "dataclasses",
     "pyyaml",
-    "linkml",
-    "simple_data_catalog_model@git+git@github.com:uuidea/simple_data_catalog_model.git"
+    "linkml"
+    # "simple_data_catalog_model@git+git@github.com:uuidea/simple_data_catalog_model.git"
 ]
 
 

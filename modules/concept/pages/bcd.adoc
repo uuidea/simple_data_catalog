@@ -1,4 +1,4 @@
-= test ing
+= test
 
 test is just for testing
 
@@ -15,6 +15,4 @@ hierarchy:
 [cols="1"]
 |=== 
 a| xref:dataset:herrcgre.adoc[test dataset]
-a| xref:dataset:dfwejbsdf.adoc[test lineage dataset]
-a| xref:dataset:djemchweer.adoc[yet another dataset]
 |===

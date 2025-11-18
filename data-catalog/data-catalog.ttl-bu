@@ -16,13 +16,23 @@ ex:fhwiehduwke a dcat:Catalog ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "my name" ] ;
     dcterms:title "test data catalog" ;
-    dcat:dataset ex:herrcgre .
+    dcat:dataset ex:herrcgre ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] .
 
 ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:computedOn ex:herrcgre ;
     dqv:isMeasurementOf ex:fkrhkqewjewrc ;
     dqv:value "0.9"^^xsd:float ;
     prov:generatedAtTime "2025-04-22"^^xsd:date .
+
+
+ex:gksurtnfhslfg a dqv:QualityMeasurement ;
+    dqv:computedOn ex:dfwejbsdf ;
+    dqv:isMeasurementOf ex:fkrhkqewjewrc ;
+    dqv:value "0.9"^^xsd:float ;
+    prov:generatedAtTime "2025-04-22"^^xsd:date .
+
 
 ex:abc a skos:Concept ;
     skos:altLabel "juice" ;
@@ -37,7 +47,7 @@ ex:abcde a dcat:DatasetSeries ;
 ex:bcd a skos:Concept ;
     skos:altLabel "practice" ;
     skos:definition "test is just for testing" ;
-    skos:prefLabel "test" .
+    skos:prefLabel "test ing" .
 
 ex:def a skos:Concept ;
     skos:altLabel "information (leave a comment ;-))" ;
@@ -45,7 +55,7 @@ ex:def a skos:Concept ;
     skos:prefLabel "data" .
 
 ex:fkrhkqewjewrc a dqv:Metric ;
-    skos:definition "an example of a data quality metric" ;
+    skos:definition "an examiple of a data quality metric" ;
     skos:prefLabel "example metric" ;
     dqv:expectedDataType xsd:float ;
     dqv:inDimension "Completeness" .
@@ -65,7 +75,42 @@ ex:herrcgre a dcat:Dataset ;
         ex:def ;
     dcat:version [ a dcterms:PeriodOfTime ;
             time:hasBeginning "2025-01-01"^^xsd:date ;
+            time:hasEnd "2025-12-31"^^xsd:date ] ;
+    prov:wasDerivedFrom ex:dfwejbsdf.
+
+ex:dfwejbsdf a dcat:Dataset ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
+    dcterms:title "test lineage dataset" ;
+    vcard:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "my.name@example.com" ] ;
+    adms:status "draft" ;
+    dcat:inSeries ex:abcde ;
+    dcat:theme ex:abc,
+        ex:bcd;
+    dcat:version [ a dcterms:PeriodOfTime ;
+            time:hasBeginning "2025-01-01"^^xsd:date ;
             time:hasEnd "2025-12-31"^^xsd:date ] .
+
+ex:djemchweer a dcat:Dataset ;
+    dcterms:description "Yet another data set, this one has a description.";
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name is bob" ] ;
+    dcterms:title "yet another dataset" ;
+    vcard:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "my.name@example.eu" ] ;
+    adms:status "production" ;
+    dcat:inSeries ex:abcde ;
+    dcat:theme ex:bcd;
+    dcat:version [ a dcterms:PeriodOfTime ;
+            time:hasBeginning "2025-01-01"^^xsd:date ;
+            time:hasEnd "2025-12-31"^^xsd:date ] .
+
+
 
 [] a ns1:Container ;
     ns1:concepts ex:abc,

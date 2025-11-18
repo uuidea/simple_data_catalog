@@ -12,8 +12,6 @@ a| Title
 a| test data catalog
 a| Publisher
 a| my name
-a| License
-a| cc-by 4.0
 |===
  
 

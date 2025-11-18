@@ -4,7 +4,7 @@ from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, S
 import pandas as pd
 import os
 import re
-import igraph as ig
+# import igraph as ig
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud

@@ -5,10 +5,6 @@
 
 *** xref:dataset:herrcgre.adoc[herrcgre]
 
-*** xref:dataset:dfwejbsdf.adoc[dfwejbsdf]
-
-*** xref:dataset:djemchweer.adoc[djemchweer]
-
 ** Concepts 
 
 *** xref:concept:abc.adoc[abc]

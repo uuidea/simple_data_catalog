@@ -1,0 +1,3 @@
+[submodule "simple_data_catalog_model"]
+	path = simple_data_catalog_model
+	url = https://github.com/uuidea/simple_data_catalog_model

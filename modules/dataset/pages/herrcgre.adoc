@@ -7,7 +7,7 @@ None
 == Themes 
 
 xref:concept:abc.adoc[energy]
-xref:concept:bcd.adoc[test ing]
+xref:concept:bcd.adoc[test]
 xref:concept:def.adoc[data]
 
 == Overview 
@@ -44,8 +44,6 @@ a| Completeness
 ---- 
 graph TD
     herrcgre[test dataset]
-    None[test lineage dataset]
-    herrcgre --> None
 
 ----
 
@@ -55,7 +53,7 @@ graph TD
 ---- 
 pie
     title Input Datasets Quality Measurements
-    "with quality measurements" : 1
+    "with quality measurements" : 0
     "without quality measurements" : 0
 ----
 

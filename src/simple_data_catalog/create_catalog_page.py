@@ -1,4 +1,4 @@
-import pydantic
+
 from rdflib import Graph, URIRef, RDF, DCAT, DCTERMS
 
 from pydantic import BaseModel, Field
