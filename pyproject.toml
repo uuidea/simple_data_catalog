@@ -10,7 +10,7 @@ authors = [
 ]
 description = "A simple package that supports data catalogging for small organizations and projects"
 readme = "README.md"
-# requires-python = ">=3.8"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: Apache Software License",
@@ -33,7 +33,9 @@ dependencies = [
     "rich",
     "dataclasses",
     "pyyaml",
-    "linkml"
+    "linkml",
+    "linkml>=1.0",        # provides `linkml-convert`
+    "rdflib>=7.0",
 ]
 
 

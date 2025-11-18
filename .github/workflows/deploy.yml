@@ -1,15 +1,24 @@
 name: Build & Deploy Data Catalog
 
+# --------------------------------------------------------------
+# Trigger on pushes to the default branch and on manual dispatch
+# --------------------------------------------------------------
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
 
+# --------------------------------------------------------------
+# Permissions needed for Pages deployment
+# --------------------------------------------------------------
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# --------------------------------------------------------------
+# Allow only one deployment at a time (keep in‑progress runs)
+# --------------------------------------------------------------
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -22,83 +31,83 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
-      # -------------------------------------------------
-      # 1️⃣ Checkout repository
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 1️⃣ Checkout the repository
+      # -----------------------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # -------------------------------------------------
-      # 2️⃣ Set up Python (uv + pip fallback)
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 2️⃣ Set up Python (used by uv, linkml‑convert, rdflib, etc.)
+      # -----------------------------------------------------------------
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "pip"
 
-      # -------------------------------------------------
-      # 3️⃣ Install uv (fallback to pip if uv is missing)
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 3️⃣ Install uv (fallback to pip if uv is not present)
+      # -----------------------------------------------------------------
       - name: Install uv
         run: |
           python -m pip install --upgrade pip
           python -m pip install uv
 
-      # -------------------------------------------------
-      # 4️⃣ Install *project* dependencies + missing tools
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 4️⃣ Install **all** Python dependencies
+      # -----------------------------------------------------------------
+      #   • If you use a pyproject.toml / uv.lock, `uv sync` will install
+      #     everything (including linkml and rdflib).  
+      #   • If you only have a requirements.txt, `pip install -r` works.
       - name: Install Python dependencies
         run: |
-          # 1️⃣ Install everything declared in pyproject.toml (if you use uv)
           if command -v uv >/dev/null; then
-            uv sync
+            uv sync            # reads pyproject.toml / uv.lock
           else
+            # fallback – install the minimal set manually
             pip install -e .
+            pip install linkml rdflib
           fi
 
-          # 2️⃣ Make sure the CLI tools we need are present even if they
-          #    are not listed in pyproject.toml.
-          pip install linkml rdflib  # linkml‑convert + rdflib
-
-      # -------------------------------------------------
-      # 5️⃣ Set up Node (needed for Antora)
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 5️⃣ Set up Node (required for Antora)
+      # -----------------------------------------------------------------
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "20"          # any LTS version works
           cache: "npm"
 
-      # -------------------------------------------------
-      # 6️⃣ Install Antora CLI & Site Generator globally
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 6️⃣ Install Antora CLI + Site Generator globally
+      # -----------------------------------------------------------------
       - name: Install Antora
         run: |
           npm install -g @antora/cli @antora/site-generator
+          # Verify installation (optional, helps debugging)
+          antora --version
+          npm list -g --depth=0 | grep antora
 
-          # Add the global npm bin directory to PATH for the rest of the job
-          echo "$(npm root -g)/.bin" >> $GITHUB_PATH
-
-      # -------------------------------------------------
-      # 7️⃣ Run the catalog‑generation script (creates docs/)
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 7️⃣ Make the generation script executable and run it
+      # -----------------------------------------------------------------
       - name: Generate Data Catalog
         run: |
           chmod +x scripts/generate-datacatalog.sh
           ./scripts/generate-datacatalog.sh
 
-      # -------------------------------------------------
-      # 8️⃣ Upload the generated static site as an artifact
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
+      # 8️⃣ Upload the generated static site as an artifact for Pages
+      # -----------------------------------------------------------------
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/
 
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
       # 9️⃣ Deploy to GitHub Pages
-      # -------------------------------------------------
+      # -----------------------------------------------------------------
       - name: Deploy to GitHub Pages
         id: deploy
         uses: actions/deploy-pages@v4
