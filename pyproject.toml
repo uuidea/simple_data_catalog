@@ -20,8 +20,6 @@ classifiers = [
 allow-direct-references= true
 dependencies = [
     "pandas",
-    "rdflib",
-    "igraph",
     "matplotlib",
     "wordcloud",
     "validators",
@@ -29,11 +27,10 @@ dependencies = [
     "asciidoc3",
     "jinja2",
     "argparse",
-    "pathlib",
+    # "pathlib",
     "rich",
     "dataclasses",
     "pyyaml",
-    "linkml",
     "linkml>=1.0",        # provides `linkml-convert`
     "rdflib>=7.0",
 ]

@@ -1,7 +1,7 @@
+from rdflib import Graph, URIRef, RDF
+from rdflib.namespace import DCAT, DCTERMS 
 
-from rdflib import Graph, URIRef, RDF, DCAT, DCTERMS
-
-from pydantic import BaseModel, Field
+# from pydantic import BaseModel, Field
 from typing import List, Optional
 from simple_data_catalog.model.datamodel import DataCatalog
 from simple_data_catalog.create_metadata_table import create_metadata_table

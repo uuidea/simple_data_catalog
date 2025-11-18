@@ -1,7 +1,7 @@
 #!/bin/bash
 
 uv run linkml-convert \
-    -s simple_data_catalog_model/src/simple_data_catalog_model/dataset_model.yaml \
+    -s simple_data_catalog_model/src/simple_data_catalog_model/data-catalog.yaml \
     -t ttl \
     -o data-catalog/data-catalog.ttl \
     data-catalog/data-catalog.yaml
