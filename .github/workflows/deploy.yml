@@ -45,7 +45,7 @@ jobs:
       # - name: fix issues
       #   run: npm audit fix --force
       - name: Install Antora dependencies
-        run: npm i
+        run: npm i -g
 
       - name: Setup Python 3.12.7
         uses: actions/setup-python@v3
