@@ -1,5 +1,5 @@
 {
-  "name": "simple_data_catalog",
+  "name": "sdc",
   "dependencies": {
     "@antora/cli": "3.1.9",
     "@antora/collector-extension": "^1.0.2",
