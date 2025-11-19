@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: '22.20.0'
       - name: Install Antora 3.1.10
-        run: npm i antora@3.1.10
+        run: npm i -g antora@3.1.10
       # - name: fix issues
       #   run: npm audit fix --force
       - name: Install Antora dependencies
@@ -62,7 +62,7 @@ jobs:
           chmod +x scripts/generate-datacatalog.sh
           ./scripts/generate-datacatalog.sh
       - name: Generate site
-        run: npx antora antora-playbook.yml
+        run: antora antora-playbook.yml
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
