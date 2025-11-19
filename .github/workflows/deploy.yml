@@ -62,7 +62,7 @@ jobs:
           chmod +x scripts/generate-datacatalog.sh
           ./scripts/generate-datacatalog.sh
       - name: Generate site
-        run: antora antora-playbook.yml
+        run: antora antora-playbook.yml --stacktrace
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
