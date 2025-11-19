@@ -6,7 +6,8 @@
     "@antora/site-generator": "3.1.9",
     "@mermaid-js/mermaid-cli": "^11.4.2",
     "@sntke/antora-mermaid-extension": "^0",
-    "asciidoctor-kroki": "^0.18.1"
+    "asciidoctor-kroki": "^0.18.1",
+    "toml":"^0"
   },
   "devDependencies": {
     "@djencks/asciidoctor-mathjax": "^0.0.9"
