@@ -23,7 +23,6 @@ concurrency:
   group: github-pages
   cancel-in-progress: false
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
