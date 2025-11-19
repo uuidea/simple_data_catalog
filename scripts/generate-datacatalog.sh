@@ -8,4 +8,4 @@ uv run linkml-convert \
 
 uv run python src/simple_data_catalog/create_data_catalog.py
 
-antora antora-playbook.yml
+npx antora antora-playbook.yml
