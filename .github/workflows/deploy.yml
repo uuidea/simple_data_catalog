@@ -36,16 +36,15 @@ jobs:
           submodules: 'true'
       - name: Configure Pages
         uses: actions/configure-pages@v3
+
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '18'
+          node-version: '22.20.0'
       - name: Install Antora 3.1.10
         run: npm i antora@3.1.10
-      # - name: fix issues
-      #   run: npm audit fix --force
       - name: Install Antora dependencies
-        run: npm i 
+        run: npm i        
 
       - name: Setup Python 3.12.7
         uses: actions/setup-python@v3
@@ -63,6 +62,7 @@ jobs:
           ./scripts/generate-datacatalog.sh
       - name: Generate site
         run: npx antora antora-playbook.yml 
+
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
