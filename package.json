@@ -4,7 +4,7 @@
     "@antora/cli": "3.1.9",
     "@antora/collector-extension": "^1.0.2",
     "@antora/lunr-extension": "^1.0.0-alpha.8",
-    "@antora/site-generator": "3.1.9",
+    "@antora/site-generator": "^0",
     "@mermaid-js/mermaid-cli": "^11.4.2",
     "@sntke/antora-mermaid-extension": "^0",
     "asciidoctor-kroki": "^0.18.1",
