@@ -41,11 +41,11 @@ jobs:
         with:
           node-version: '18'
       - name: Install Antora 3.1.10
-        run: npm i -g antora@3.1.10
+        run: npm i antora@3.1.10
       # - name: fix issues
       #   run: npm audit fix --force
       - name: Install Antora dependencies
-        run: npm i -g
+        run: npm i 
 
       - name: Setup Python 3.12.7
         uses: actions/setup-python@v3
@@ -62,7 +62,7 @@ jobs:
           chmod +x scripts/generate-datacatalog.sh
           ./scripts/generate-datacatalog.sh
       - name: Generate site
-        run: antora antora-playbook.yml --stacktrace
+        run: npx antora antora-playbook.yml 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
