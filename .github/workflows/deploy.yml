@@ -2,27 +2,15 @@ name: Build & Deploy Data Catalog
 
 # --------------------------------------------------------------
 # Trigger on pushes to the default branch and on manual dispatch
-# --------------------------------------------------------------
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
-
-# --------------------------------------------------------------
-# Permissions needed for Pages deployment
-# --------------------------------------------------------------
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
 permissions:
   contents: read
   pages: write
   id-token: write
-
-# --------------------------------------------------------------
-# Allow only one deployment at a time (keep in‑progress runs)
-# --------------------------------------------------------------
-concurrency:
-  group: github-pages
-  cancel-in-progress: false
-
 
 jobs:
   build:
