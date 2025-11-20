@@ -17,7 +17,7 @@
 #     runs-on: ubuntu-latest
 #     environment:
 #       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
+#       url:
 #     steps:
 #       - name: Checkout repository
 #         uses: actions/checkout@v4
@@ -61,7 +61,7 @@
 # #     runs-on: ubuntu-latest
 # #     environment:
 # #       name: github-pages
-# #       url: ${{ steps.deployment.outputs.page_url }}
+# #       
 # #     steps:
 # #       - name: Checkout repository
 # #         uses: actions/checkout@v4
