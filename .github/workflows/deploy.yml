@@ -1,16 +1,16 @@
-# name: Build & Deploy Data Catalog
+name: Build & Deploy Data Catalog
 
-# # --------------------------------------------------------------
-# # Trigger on pushes to the default branch and on manual dispatch
-# on:
-#   workflow_dispatch:
-# concurrency:
-#   group: github-pages
-#   cancel-in-progress: false
-# permissions:
-#   contents: read
-#   pages: write
-#   id-token: write
+# --------------------------------------------------------------
+# Trigger on pushes to the default branch and on manual dispatch
+on:
+  workflow_dispatch:
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 # jobs:
 #   build:
@@ -104,17 +104,17 @@
 # #         id: deployment
 # #         uses: actions/deploy-pages@v4
 
-name: Build and deploy documentation site
-on:
-  workflow_dispatch:
-concurrency:
-  group: github-pages
-  cancel-in-progress: false
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-# jobs:
+# name: Build and deploy documentation site
+# on:
+#   workflow_dispatch:
+# concurrency:
+#   group: github-pages
+#   cancel-in-progress: false
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
+# # jobs:
 #   build:
 #     runs-on: ubuntu-latest
 #     environment:
