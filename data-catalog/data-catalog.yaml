@@ -6,6 +6,7 @@ dataCatalog:
     name: my name
   dataset:
     - ex:herrcgre
+    - ex:bvkljfhds
 
 datasets:
   - identifier: ex:herrcgre
