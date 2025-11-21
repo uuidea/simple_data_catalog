@@ -163,6 +163,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v5
+      with:
+          submodules: ' true'
     - name: Configure Pages
       uses: actions/configure-pages@v5
 
