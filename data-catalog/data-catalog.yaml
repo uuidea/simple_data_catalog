@@ -1,5 +1,5 @@
 dataCatalog:
-  identifier: ex:fhwiehduwke
+  identifier: ex:abcde123
   description: a test data catalog created to validate the schema
   title: test data catalog
   publisher:
@@ -17,7 +17,7 @@ datasets:
     status: draft
     theme:
       - ex:abc
-      - ex:bcd 
+      - ex:bcd
       - ex:def
     license:
       title: cc-by 4.0
@@ -34,7 +34,7 @@ datasets:
     status: draft
     theme:
       - ex:abc
-      - ex:bcd 
+      - ex:bcd
     license:
       title: cc-by 4.0
     temporal:

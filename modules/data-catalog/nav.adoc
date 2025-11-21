@@ -1,19 +1,1 @@
 
-* xref:data-catalog:fhwiehduwke.adoc[fhwiehduwke]
-
-** Datasets 
-
-*** xref:dataset:herrcgre.adoc[herrcgre]
-
-** Concepts 
-
-*** xref:concept:abc.adoc[abc]
-
-*** xref:concept:bcd.adoc[bcd]
-
-*** xref:concept:def.adoc[def]
-
-** Metrics 
-
-*** xref:metric:fkrhkqewjewrc.adoc[fkrhkqewjewrc]
-

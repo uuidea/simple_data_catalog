@@ -11,18 +11,46 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:fhwiehduwke a dcat:Catalog ;
+ex:abcde123 a dcat:Catalog ;
     dcterms:description "a test data catalog created to validate the schema" ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "my name" ] ;
     dcterms:title "test data catalog" ;
     dcat:dataset ex:herrcgre .
 
+ex:bvkljfhds a dcat:Dataset ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
+    dcterms:title "test lineage dataset" ;
+    vcard:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "my.name@example.com" ] ;
+    adms:status "draft" ;
+    dcat:inSeries ex:abcde ;
+    dcat:theme ex:abc,
+        ex:bcd ;
+    dcat:version [ a dcterms:PeriodOfTime ;
+            time:hasBeginning "2025-01-01"^^xsd:date ;
+            time:hasEnd "2025-12-31"^^xsd:date ] ;
+    prov:wasDerivedFrom ex:herrcgre .
+
 ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:computedOn ex:herrcgre ;
     dqv:isMeasurementOf ex:fkrhkqewjewrc ;
     dqv:value "0.9"^^xsd:float ;
     prov:generatedAtTime "2025-04-22"^^xsd:date .
+
+ex:def a skos:Concept ;
+    skos:altLabel "information (leave a comment ;-))" ;
+    skos:definition "data is plural of datum" ;
+    skos:prefLabel "data" .
+
+ex:fkrhkqewjewrc a dqv:Metric ;
+    skos:definition "an example of a data quality metric" ;
+    skos:prefLabel "example metric" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension "Completeness" .
 
 ex:abc a skos:Concept ;
     skos:altLabel "juice" ;
@@ -38,17 +66,6 @@ ex:bcd a skos:Concept ;
     skos:altLabel "practice" ;
     skos:definition "test is just for testing" ;
     skos:prefLabel "test" .
-
-ex:def a skos:Concept ;
-    skos:altLabel "information (leave a comment ;-))" ;
-    skos:definition "data is plural of datum" ;
-    skos:prefLabel "data" .
-
-ex:fkrhkqewjewrc a dqv:Metric ;
-    skos:definition "an example of a data quality metric" ;
-    skos:prefLabel "example metric" ;
-    dqv:expectedDataType xsd:float ;
-    dqv:inDimension "Completeness" .
 
 ex:herrcgre a dcat:Dataset ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -71,8 +88,9 @@ ex:herrcgre a dcat:Dataset ;
     ns1:concepts ex:abc,
         ex:bcd,
         ex:def ;
-    ns1:dataCatalog ex:fhwiehduwke ;
-    ns1:datasets ex:herrcgre ;
+    ns1:dataCatalog ex:abcde123 ;
+    ns1:datasets ex:bvkljfhds,
+        ex:herrcgre ;
     ns1:metrics ex:fkrhkqewjewrc ;
     ns1:qualityMeasurements ex:sfasdggfvrln ;
     ns1:series ex:abcde .
