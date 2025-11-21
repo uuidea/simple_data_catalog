@@ -33,7 +33,7 @@ output:
 antora:
   extensions:
   - require: '@antora/lunr-extension' # support search
-  - require: '@sntke/antora-mermaid-extension' # <1>
+  # - require: '@sntke/antora-mermaid-extension' # <1>
     mermaid_library_url: https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs # <2>
     script_stem: header-scripts # <3>
     mermaid_initialize_options: # <4>
