@@ -168,6 +168,9 @@ jobs:
     - name: Configure Pages
       uses: actions/configure-pages@v5
 
+      #####################  
+      ## Python actions
+      #####################
     - name: Setup Python 3.12.7
       uses: actions/setup-python@v3
       with:
@@ -176,14 +179,14 @@ jobs:
       run: curl -LsSf https://astral.sh/uv/0.7.8/install.sh | sh
     - name: Install Python project dependencies
       run: uv sync --no-dev --no-install-project --locked
-    # - name: Install Just 1.38.0
-    #   run: pip install rust-just==1.38.0
     - name: Generate Data Catalog
       run: |
         chmod +x scripts/generate-datacatalog.sh
         ./scripts/generate-datacatalog.sh
-
-
+        
+      ####################
+      ## ANtora actions
+      ####################
     - name: Install Node.js
       uses: actions/setup-node@v5
       with:

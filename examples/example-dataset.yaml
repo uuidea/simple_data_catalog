@@ -1,0 +1,18 @@
+datasets:
+  - identifier: ex:herrcgre
+    title: test dataset
+    publisher:
+      name : my name
+    contactPoint: 
+      hasEmail: my.name@example.com
+    status: draft
+    theme:
+      - ex:abc
+      - ex:bcd 
+      - ex:def
+    license:
+      title: cc-by 4.0
+    temporal:
+      hasBeginning: 2025-01-01
+      hasEnd: 2025-12-31  
+    inSeries: ex:abcde  

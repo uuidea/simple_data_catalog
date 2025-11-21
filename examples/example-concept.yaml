@@ -1,0 +1,5 @@
+concepts:
+  - prefLabel: energy
+    identifier: ex:abc
+    definition: energy is energy
+    altLabel: juice

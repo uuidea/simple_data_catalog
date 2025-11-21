@@ -1,0 +1,5 @@
+series:
+  - identifier: ex:abcde
+    title: all the datasets by this publisher
+    publisher:
+      name: My name
