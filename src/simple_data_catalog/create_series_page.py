@@ -4,19 +4,19 @@ from simple_data_catalog.create_metadata_table import create_metadata_table
 from simple_data_catalog.analysis_functions import was_derived_from_graphic, supply_chain_analysis
 from simple_data_catalog.create_data_quality_table import create_data_quality_table
 
-def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
+def create_series_page(series: URIRef, catalog_graph:Graph):
     adoc_str= str()
 
     # add title
-    adoc_str += "= " + get_title(dataset, catalog_graph) + "\n\n"
+    adoc_str += "= " + get_title(series, catalog_graph) + "\n\n"
     # add descrioption
 
-    adoc_str += "== Description \n\n"+ get_description(subject= dataset,
+    adoc_str += "== Description \n\n"+ get_description(subject= series,
                                          graph=catalog_graph) +"\n\n"
     
     # add themes (new section)
     adoc_str += "== Themes \n\n"
-    themes = [create_local_link(theme, catalog_graph) for theme in catalog_graph.objects(dataset, DCAT.theme)]
+    themes = [create_local_link(theme, catalog_graph) for theme in catalog_graph.objects(series, DCAT.theme)]
     if themes:
         adoc_str += "\n".join(themes) + "\n\n"
     
@@ -25,39 +25,19 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
 
     adoc_str= adoc_str + "== Overview \n\n"
     adoc_str= adoc_str+create_metadata_table(catalog_graph=catalog_graph,  
-                                             resource=dataset)
+                                             resource=series)
     
+    # add list of all the datasets in this series
 
-    # add data quality table 
+    datasets_in_series= [create_local_link(dataset, catalog_graph) for dataset in catalog_graph.subjects(DCAT.inSeries, series)]
+    
+    if datasets_in_series:
+        adoc_str+= "\n".join(themes) + "\n\n"
 
-    adoc_str += "== Data quality \n\n"
-
-    adoc_str+= create_data_quality_table(catalog_graph=catalog_graph, resource=dataset)
-
-      
-    # add data Lineage
-
-    adoc_str= adoc_str+"== Data Lineage \n\n"
-
-
-    ## add data lineage diagram
-
-
-
-    adoc_str= adoc_str + was_derived_from_graphic(catalog_graph=catalog_graph,
-                              uri=dataset)
-
-
-    ## add sypply chain analysis
-
-    adoc_str += supply_chain_analysis(catalog_graph=catalog_graph, dataset_uri=dataset)
     ## write file 
 
-
-
-
     write_file(adoc_str=adoc_str, 
-               resource=dataset, 
+               resource=series, 
                output_dir='modules/dataset/pages/', 
                catalog_graph= catalog_graph)
 

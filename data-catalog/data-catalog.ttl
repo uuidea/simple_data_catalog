@@ -16,7 +16,14 @@ ex:abcde123 a dcat:Catalog ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "my name" ] ;
     dcterms:title "test data catalog" ;
-    dcat:dataset ex:herrcgre .
+    dcat:dataset ex:bvkljfhds,
+        ex:herrcgre .
+
+ex:sfasdggfvrln a dqv:QualityMeasurement ;
+    dqv:computedOn ex:herrcgre ;
+    dqv:isMeasurementOf ex:fkrhkqewjewrc ;
+    dqv:value "0.9"^^xsd:float ;
+    prov:generatedAtTime "2025-04-22"^^xsd:date .
 
 ex:bvkljfhds a dcat:Dataset ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -34,12 +41,6 @@ ex:bvkljfhds a dcat:Dataset ;
             time:hasBeginning "2025-01-01"^^xsd:date ;
             time:hasEnd "2025-12-31"^^xsd:date ] ;
     prov:wasDerivedFrom ex:herrcgre .
-
-ex:sfasdggfvrln a dqv:QualityMeasurement ;
-    dqv:computedOn ex:herrcgre ;
-    dqv:isMeasurementOf ex:fkrhkqewjewrc ;
-    dqv:value "0.9"^^xsd:float ;
-    prov:generatedAtTime "2025-04-22"^^xsd:date .
 
 ex:def a skos:Concept ;
     skos:altLabel "information (leave a comment ;-))" ;
