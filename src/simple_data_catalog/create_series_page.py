@@ -28,7 +28,7 @@ def create_series_page(series: URIRef, catalog_graph:Graph):
                                              resource=series)
     
     # add list of all the datasets in this series
-
+    adoc_str= adoc_str + "== Datasets in this series \n\n"
     datasets_in_series= [create_local_link(dataset, catalog_graph) for dataset in catalog_graph.subjects(DCAT.inSeries, series)]
     
     if datasets_in_series:
