@@ -32,7 +32,7 @@ def create_series_page(series: URIRef, catalog_graph:Graph):
     datasets_in_series= [create_local_link(dataset, catalog_graph) for dataset in catalog_graph.subjects(DCAT.inSeries, series)]
     
     if datasets_in_series:
-        adoc_str+= "\n".join(themes) + "\n\n"
+        adoc_str+= "\n".join(datasets_in_series) + "\n\n"
 
     ## write file 
 
