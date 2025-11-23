@@ -5,6 +5,8 @@ dcat = Namespace("http://www.w3.org/ns/dcat#")
 dcterms = Namespace("http://purl.org/dc/terms/")
 foaf = Namespace("http://xmlns.com/foaf/0.1/")
 ex= Namespace("http://www.example.com/")
+ADMS= Namespace("http://www.w3.org/ns/adms#")
+
 
 def create_metadata_table(catalog_graph: Graph, resource: URIRef):
     # Collect predicate–object pairs using plain triple matching
@@ -53,7 +55,19 @@ def create_metadata_table(catalog_graph: Graph, resource: URIRef):
             elif type(o)==URIRef:
                 metadata.append( str(o))
             else :
-                metadata.append(str(o))                         
+                metadata.append(str(o))    
+
+    if (resource, ADMS.status, None) in catalog_graph:
+        obj= catalog_graph.objects(resource, ADMS.status)
+        for o in obj:
+            if type(o)== Literal:
+                metadata.append('Status')
+                metadata.append(str(o))
+
+            if type(o)==URIRef:
+                label= catalog_graph.value(o, dcterms.title)
+                link_str=f"link:{o}[{label}]"
+                metadata.append(['Status', link_str])                                 
 
     metadata_table= create_adoc_table(entries=metadata, num_cols=2)
 

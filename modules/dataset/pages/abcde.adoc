@@ -16,5 +16,8 @@ a| Publisher
 a| My name
 |===
  
+== Datasets in this series 
 
+xref:dataset:bvkljfhds.adoc[test lineage dataset]
+xref:dataset:herrcgre.adoc[test dataset]
 

@@ -9,6 +9,7 @@ from simple_data_catalog.model.datamodel import DataCatalog
 import os
 import re
 DQV = Namespace("http://www.w3.org/ns/dqv#")
+ADMS= Namespace("http://www.w3.org/ns/adms#")
 
 
 def create_local_link(resource: URIRef, catalog_graph: Graph)->str:
@@ -60,6 +61,12 @@ def get_definition(subject: URIRef, graph: Graph)->str:
     
 def get_title(subject: URIRef, graph: Graph)->str:
     title= graph.value(subject,DCTERMS.title)
+
+    title_str=str(title)
+    return title_str
+
+def get_status(subject: URIRef, graph: Graph)->str:
+    title= graph.value(subject,ADMS.status)
 
     title_str=str(title)
     return title_str
