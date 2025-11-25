@@ -22,7 +22,9 @@ a| License
 a| cc-by 4.0
 a| Status
 a| draft
-|===
+|=== 
+
+
  
 == Distributions 
 
@@ -34,7 +36,9 @@ a| Issued
 a| —
 a| https://www.example.com/getyourdatahere.csv
 a| —
-|===== Data quality 
+|=== 
+
+== Data quality 
 
 [cols="1,1,1,1"]
 |=== 
@@ -46,7 +50,9 @@ a| xref:metric:fkrhkqewjewrc.adoc[example metric]
 a| 0.9
 a| 2025-04-22
 a| Completeness
-|===
+|=== 
+
+
 
 == Data Lineage 
 

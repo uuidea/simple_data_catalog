@@ -15,4 +15,5 @@ hierarchy:
 [cols="1"]
 |=== 
 a| xref:dataset:herrcgre.adoc[test dataset]
-|===
+|=== 
+

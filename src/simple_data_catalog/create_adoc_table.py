@@ -21,5 +21,5 @@ def create_adoc_table(entries: list, num_cols: int) -> str:
     for entry in entries:
         table_str = table_str + "a| " + str(entry) + "\n"  # a is to support lists
 
-    table_str = table_str + "|==="
+    table_str = table_str + "|=== \n\n"
     return table_str

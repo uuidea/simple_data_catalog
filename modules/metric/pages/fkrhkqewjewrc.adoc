@@ -9,4 +9,5 @@ Datasets with quality measurements using this metric:
 [cols="1"]
 |=== 
 a| xref:dataset:herrcgre.adoc[test dataset]
-|===
+|=== 
+
