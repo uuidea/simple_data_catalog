@@ -1,6 +1,6 @@
 site:
   title: Data Catalog
-  start_page: data-catalog:data-catalog:fhwiehduwke.adoc
+  start_page: data-catalog:data-catalog:abcde123.adoc
 content:
   sources: 
   - url: . # https://uuidea.github.io/simple_data_catalog/
