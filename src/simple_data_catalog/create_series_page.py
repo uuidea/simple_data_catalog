@@ -38,7 +38,7 @@ def create_series_page(series: URIRef, catalog_graph:Graph):
 
     write_file(adoc_str=adoc_str, 
                resource=series, 
-               output_dir='modules/dataset/pages/', 
+               output_dir='modules/dataset-series/pages/', 
                catalog_graph= catalog_graph)
 
     return 1

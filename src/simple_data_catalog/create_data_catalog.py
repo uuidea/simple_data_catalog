@@ -7,18 +7,41 @@ from simple_data_catalog.page_creation_functions import create_nav_header
 from rdflib import Graph, RDF, DCAT, SKOS, Namespace
 import os
 
+from pathlib import Path
+
 
 def create_data_catalog(catalog_graph: Graph):
+
+    ## delete old stuff
     if os.path.exists('modules/data-catalog/nav.adoc'):
         os.remove('modules/data-catalog/nav.adoc')
 
+    rootdir = 'modules/'
+
+    # Walk the directory tree and delete *.adoc and *.svg files
+    for root, _, files in os.walk(rootdir):
+        for current_file in files:
+            if current_file.endswith(('.adoc', '.svg')):
+                # Build the full path to the file and remove it
+                file_path = os.path.join(root, current_file)
+                try:
+                    os.remove(file_path)
+                except OSError as exc:
+                    # Log or handle the error as needed; for now we just print
+                    print(f"Failed to delete {file_path}: {exc}")
+
+
+
     nav_file_path = 'modules/data-catalog/nav.adoc'
+
+    # Ensure the target directory exists
+    Path(nav_file_path).parent.mkdir(parents=True, exist_ok=True)
+
     with open(nav_file_path, 'w') as f:
         f.write(f"""
 """)       
+        
     create_catalog_page(catalog_graph)
-
-
     DQV = Namespace("http://www.w3.org/ns/dqv#")
 
     create_nav_header(page_type= 'Dataset Series')

@@ -33,8 +33,8 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     # add distributions
     # see if there are any
     distributions= catalog_graph.objects(dataset, DCAT.distribution)
-    if distributions:
-        adoc_str+= "== Distributions"
+    if distributions is not None:
+        adoc_str+= "== Distributions \n\n"
         adoc_str+= create_distribution_table(dataset=dataset, 
                                              catalog_graph=catalog_graph)
 

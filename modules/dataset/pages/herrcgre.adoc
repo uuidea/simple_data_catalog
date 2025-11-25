@@ -24,7 +24,9 @@ a| Status
 a| draft
 |===
  
-== Distributions[cols="1,1,1"]
+== Distributions 
+
+[cols="1,1,1"]
 |=== 
 a| Format
 a| Access URL
