@@ -24,7 +24,15 @@ a| Status
 a| draft
 |===
  
-== Data quality 
+== Distributions[cols="1,1,1"]
+|=== 
+a| Format
+a| Access URL
+a| Issued
+a| —
+a| https://www.example.com/getyourdatahere.csv
+a| —
+|===== Data quality 
 
 [cols="1,1,1,1"]
 |=== 

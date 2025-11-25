@@ -3,6 +3,7 @@ from simple_data_catalog.page_creation_functions import write_file, get_title, g
 from simple_data_catalog.create_metadata_table import create_metadata_table
 from simple_data_catalog.analysis_functions import was_derived_from_graphic, supply_chain_analysis
 from simple_data_catalog.create_data_quality_table import create_data_quality_table
+from simple_data_catalog.create_distribution_table import create_distribution_table
 
 def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     adoc_str= str()
@@ -22,40 +23,37 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     
 
     # add metadata overview
-
     adoc_str= adoc_str + "== Overview \n\n"
     adoc_str= adoc_str+create_metadata_table(catalog_graph=catalog_graph,  
                                              resource=dataset)
     
+    # add dataservices
+
+    
+    # add distributions
+    # see if there are any
+    distributions= catalog_graph.objects(dataset, DCAT.distribution)
+    if distributions:
+        adoc_str+= "== Distributions"
+        adoc_str+= create_distribution_table(dataset=dataset, 
+                                             catalog_graph=catalog_graph)
 
     # add data quality table 
-
     adoc_str += "== Data quality \n\n"
+    adoc_str+= create_data_quality_table(catalog_graph=catalog_graph, 
+                                         resource=dataset)
 
-    adoc_str+= create_data_quality_table(catalog_graph=catalog_graph, resource=dataset)
-
-      
     # add data Lineage
-
     adoc_str= adoc_str+"== Data Lineage \n\n"
 
-
     ## add data lineage diagram
-
-
-
     adoc_str= adoc_str + was_derived_from_graphic(catalog_graph=catalog_graph,
                               uri=dataset)
-
-
+    
     ## add sypply chain analysis
-
     adoc_str += supply_chain_analysis(catalog_graph=catalog_graph, dataset_uri=dataset)
+
     ## write file 
-
-
-
-
     write_file(adoc_str=adoc_str, 
                resource=dataset, 
                output_dir='modules/dataset/pages/', 

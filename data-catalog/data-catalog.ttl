@@ -19,33 +19,25 @@ ex:abcde123 a dcat:Catalog ;
     dcat:dataset ex:bvkljfhds,
         ex:herrcgre .
 
+ex:ewfalsdfh a dcat:DataService ;
+    dcterms:description "example data sercvice like an openAPI endpoint" ;
+    dcat:endpointURL "https://www.example.com/getyourdatahere/" ;
+    dcat:servesDataset ex:bvkljfhds .
+
 ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:computedOn ex:herrcgre ;
     dqv:isMeasurementOf ex:fkrhkqewjewrc ;
     dqv:value "0.9"^^xsd:float ;
     prov:generatedAtTime "2025-04-22"^^xsd:date .
 
-ex:bvkljfhds a dcat:Dataset ;
-    dcterms:license [ a dcterms:LicenseDocument ;
-            dcterms:title "cc-by 4.0" ] ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:name "my name" ] ;
-    dcterms:title "test lineage dataset" ;
-    vcard:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "my.name@example.com" ] ;
-    adms:status "draft" ;
-    dcat:inSeries ex:abcde ;
-    dcat:theme ex:abc,
-        ex:bcd ;
-    dcat:version [ a dcterms:PeriodOfTime ;
-            time:hasBeginning "2025-01-01"^^xsd:date ;
-            time:hasEnd "2025-12-31"^^xsd:date ] ;
-    prov:wasDerivedFrom ex:herrcgre .
-
 ex:def a skos:Concept ;
     skos:altLabel "information (leave a comment ;-))" ;
     skos:definition "data is plural of datum" ;
     skos:prefLabel "data" .
+
+ex:fekfrbajr a dcat:Distribution ;
+    dcterms:format "csv" ;
+    dcat:accessURL "https://www.example.com/getyourdatahere.csv" .
 
 ex:fkrhkqewjewrc a dqv:Metric ;
     skos:definition "an example of a data quality metric" ;
@@ -68,6 +60,23 @@ ex:bcd a skos:Concept ;
     skos:definition "test is just for testing" ;
     skos:prefLabel "test" .
 
+ex:bvkljfhds a dcat:Dataset ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
+    dcterms:title "test lineage dataset" ;
+    vcard:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "my.name@example.com" ] ;
+    adms:status "draft" ;
+    dcat:inSeries ex:abcde ;
+    dcat:theme ex:abc,
+        ex:bcd ;
+    dcat:version [ a dcterms:PeriodOfTime ;
+            time:hasBeginning "2025-01-01"^^xsd:date ;
+            time:hasEnd "2025-12-31"^^xsd:date ] ;
+    prov:wasDerivedFrom ex:herrcgre .
+
 ex:herrcgre a dcat:Dataset ;
     dcterms:license [ a dcterms:LicenseDocument ;
             dcterms:title "cc-by 4.0" ] ;
@@ -77,6 +86,7 @@ ex:herrcgre a dcat:Dataset ;
     vcard:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "my.name@example.com" ] ;
     adms:status "draft" ;
+    dcat:distribution ex:fekfrbajr ;
     dcat:inSeries ex:abcde ;
     dcat:theme ex:abc,
         ex:bcd,
@@ -90,8 +100,10 @@ ex:herrcgre a dcat:Dataset ;
         ex:bcd,
         ex:def ;
     ns1:dataCatalog ex:abcde123 ;
+    ns1:dataServices ex:ewfalsdfh ;
     ns1:datasets ex:bvkljfhds,
         ex:herrcgre ;
+    ns1:distributions ex:fekfrbajr ;
     ns1:metrics ex:fkrhkqewjewrc ;
     ns1:qualityMeasurements ex:sfasdggfvrln ;
     ns1:series ex:abcde .

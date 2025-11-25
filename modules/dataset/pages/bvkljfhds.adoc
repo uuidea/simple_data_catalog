@@ -23,7 +23,7 @@ a| Status
 a| draft
 |===
  
-== Data quality 
+== Distributions== Data quality 
 
 No data quality measurements are available
 
