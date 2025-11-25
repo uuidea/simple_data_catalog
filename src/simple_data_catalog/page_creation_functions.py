@@ -140,7 +140,10 @@ def add_to_nav(file_name: str, output_dir: str):
         nav_entry = f"*** xref:concept:{file_name}.adoc[{file_name}]\n\n"
     elif 'modules/dataservice/pages/' == output_dir:
         # Extract the dataset name from the path
-        nav_entry = f"*** xref:dataservice:{file_name}.adoc[{file_name}]\n\n"                  
+        nav_entry = f"*** xref:dataservice:{file_name}.adoc[{file_name}]\n\n"  
+    elif 'modules/dataset-series/pages/' == output_dir:
+        # Extract the dataset name from the path
+        nav_entry = f"*** xref:dataset-series:{file_name}.adoc[{file_name}]\n\n"                     
     else:
         # linkstr= output_dir+"/"+ file_name
         # For catalog pages or other types, use a more general approach
