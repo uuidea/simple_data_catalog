@@ -15,6 +15,15 @@ def create_dataservice_page(dataservice: URIRef, catalog_graph:Graph):
     adoc_str += "== Description \n\n"+ get_description(subject= dataservice,
                                          graph=catalog_graph) +"\n\n"
     
+    # add link to datasets:
+
+    # served_datasets= catalog_graph.objects(dataservice, DCAT.servesDataset)
+
+    adoc_str += "== Served Datasets \n\n"
+    served_datasets = [create_local_link(service, catalog_graph) for service in catalog_graph.objects(dataservice, DCAT.servesDataset)]
+    if served_datasets:
+        adoc_str += "\n".join(served_datasets) + "\n\n"
+    
     # add themes (new section)
     adoc_str += "== Themes \n\n"
     themes = [create_local_link(theme, catalog_graph) for theme in catalog_graph.objects(dataservice, DCAT.theme)]
