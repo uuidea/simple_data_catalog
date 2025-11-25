@@ -1,4 +1,4 @@
-= None
+= Example Service
 
 == Description 
 
@@ -27,7 +27,7 @@ No data quality measurements are available
 [mermaid, lineage, svg]
 ---- 
 graph TD
-    ewfalsdfh[None]
+    ewfalsdfh[Example Service]
 
 ----
 

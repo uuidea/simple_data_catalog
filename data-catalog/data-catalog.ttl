@@ -21,6 +21,7 @@ ex:abcde123 a dcat:Catalog ;
 
 ex:ewfalsdfh a dcat:DataService ;
     dcterms:description "example data sercvice like an openAPI endpoint" ;
+    dcterms:title "Example Service" ;
     dcat:endpointURL "https://www.example.com/getyourdatahere/" ;
     dcat:servesDataset ex:bvkljfhds .
 

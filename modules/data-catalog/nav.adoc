@@ -23,7 +23,7 @@
 
 *** xref:metric:fkrhkqewjewrc.adoc[fkrhkqewjewrc]
 
-** Data Service 
+** Data Services 
 
 *** xref:modules/dataservice/pages/:ewfalsdfh.adoc[ewfalsdfh]
 
