@@ -67,7 +67,7 @@ def get_data_quality(catalog_graph= Graph, dataset_uri=URIRef):
     return quality_measurements
 
 
-def supply_chain_analysis(catalog_graph=Graph, dataset_uri= URIRef):
+def supply_chain_analysis(catalog_graph=Graph, dataset_uri= URIRef): # this should be made more generic to resource as we'll also use it for dataservices
     dqv_ns = Namespace("http://www.w3.org/ns/dqv#")
     identifier = str(catalog_graph.value(URIRef(dataset_uri), DCTERMS.identifier))
     # filename = "docs/figures/" + identifier + "_supply_chain"

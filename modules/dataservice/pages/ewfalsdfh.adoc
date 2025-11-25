@@ -1,29 +1,16 @@
-= test lineage dataset
+= None
 
 == Description 
 
-None
+example data sercvice like an openAPI endpoint
 
 == Themes 
-
-xref:concept:abc.adoc[energy]
-xref:concept:bcd.adoc[test]
 
 == Overview 
 
 [cols="1,1"]
 |=== 
-a| Title
-a| test lineage dataset
-a| Publisher
-a| my name
-a| License
-a| cc-by 4.0
-a| Status
-a| draft
 |=== 
-
-== Distributions 
 
 == Data quality 
 
@@ -36,9 +23,7 @@ No data quality measurements are available
 [mermaid, lineage, svg]
 ---- 
 graph TD
-    bvkljfhds[test lineage dataset]
-    None[test dataset]
-    bvkljfhds --> None
+    ewfalsdfh[None]
 
 ----
 
@@ -48,7 +33,7 @@ graph TD
 ---- 
 pie
     title Input Datasets Quality Measurements
-    "with quality measurements" : 1
+    "with quality measurements" : 0
     "without quality measurements" : 0
 ----
 

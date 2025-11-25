@@ -4,6 +4,7 @@ from simple_data_catalog.create_concept_page import create_concept_page
 from simple_data_catalog.create_metric_page import create_metric_page
 from simple_data_catalog.create_series_page import create_series_page
 from simple_data_catalog.page_creation_functions import create_nav_header
+from simple_data_catalog.create_dataservice_page import create_dataservice_page
 from rdflib import Graph, RDF, DCAT, SKOS, Namespace
 import os
 
@@ -59,6 +60,11 @@ def create_data_catalog(catalog_graph: Graph):
     create_nav_header(page_type="Metrics")
     for metric in catalog_graph.subjects(RDF.type, DQV.Metric):
         create_metric_page(metric=metric,catalog_graph=catalog_graph)
+
+    create_nav_header(page_type="Data Service")
+    for dataservice in catalog_graph.subjects(RDF.type, DCAT.DataService):
+        create_dataservice_page(dataservice=dataservice,catalog_graph=catalog_graph)
+    
 
 
 
