@@ -61,7 +61,7 @@ def create_data_catalog(catalog_graph: Graph):
     for metric in catalog_graph.subjects(RDF.type, DQV.Metric):
         create_metric_page(metric=metric,catalog_graph=catalog_graph)
 
-    create_nav_header(page_type="Data Service")
+    create_nav_header(page_type="Data Services")
     for dataservice in catalog_graph.subjects(RDF.type, DCAT.DataService):
         create_dataservice_page(dataservice=dataservice,catalog_graph=catalog_graph)
     
