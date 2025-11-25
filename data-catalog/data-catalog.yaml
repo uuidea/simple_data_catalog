@@ -53,6 +53,7 @@ distributions:
 
 dataServices:
   - identifier: ex:ewfalsdfh
+    title: Example Service
     servesDataset: 
       - ex:bvkljfhds
     description: example data sercvice like an openAPI endpoint
