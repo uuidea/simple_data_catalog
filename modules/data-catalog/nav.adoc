@@ -3,7 +3,7 @@
 
 ** Dataset Series 
 
-*** xref:modules/dataset-series/pages/:abcde.adoc[abcde]
+*** xref:dataset-series:abcde.adoc[abcde]
 
 ** Datasets 
 

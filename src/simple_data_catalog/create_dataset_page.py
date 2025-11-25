@@ -27,7 +27,12 @@ def create_dataset_page(dataset: URIRef, catalog_graph:Graph):
     adoc_str= adoc_str+create_metadata_table(catalog_graph=catalog_graph,  
                                              resource=dataset)
     
-    # add dataservices
+    # add services
+
+    served_datasets = [create_local_link(service, catalog_graph)+"\n" for service in catalog_graph.subjects(DCAT.servesDataset, dataset)]
+    if served_datasets:
+        adoc_str += "== Served by services \n\n"
+        adoc_str += "\n".join(served_datasets) + "\n\n"
 
     
     # add distributions
