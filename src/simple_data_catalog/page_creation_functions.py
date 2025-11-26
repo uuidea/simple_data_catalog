@@ -50,7 +50,7 @@ def write_file(adoc_str:str, resource: URIRef, output_dir: str, catalog_graph: G
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w') as f:
         f.write(adoc_str)
-    add_to_nav(output_dir = output_dir, file_name=file_name)
+    add_to_nav(output_dir = output_dir, file_name=file_name, resource=resource, catalog_graph=catalog_graph)
 
 def get_prefLabel(subject: URIRef, graph: Graph)->str:
     prefLabel= str(graph.value(subject,SKOS.prefLabel))
@@ -115,7 +115,7 @@ def get_id(
 
     Returns:
         A string representing the unique identifier, suitable for use as part of
-        a page name or link target.
+        a page name or link target.a
     """
     identifier = str(catalog_graph.value(URIRef(resource), DCTERMS.identifier))
     if identifier == "None":
@@ -127,35 +127,37 @@ def get_id(
     return identifier
 
 
-def add_to_nav(file_name: str, output_dir: str):
+def add_to_nav(file_name: str, output_dir: str, resource: URIRef, catalog_graph: Graph):
     # print(output_dir)
     """Add a new page to the navigation file (nav.adoc)"""
     # Determine the relative path for the nav entry
     # Assuming the structure: modules/Dataset/pages/...
-    if 'modules/dataset/pages/' == output_dir:
-        # Extract the dataset name from the path
 
-        nav_entry = f"*** xref:dataset:{file_name}.adoc[{file_name}]\n\n"
+    name= create_local_link(resource=resource, catalog_graph=catalog_graph) + "\n\n"
+    # if 'modules/dataset/pages/' == output_dir:
+    #     # Extract the dataset name from the path
+    #     name=create_local_link(resource=resource, catalog_graph=catalog_graph)    
+    #     nav_entry = f"*** xref:dataset:{file_name}.adoc[{name}]\n\n"
 
-    elif 'modules/data-catalog/pages/' == output_dir:  
-        nav_entry = f"* xref:data-catalog:{file_name}.adoc[{file_name}]\n\n" 
-        print("jackpot")
-    elif 'modules/metric/pages/' == output_dir:
-        # Extract the dataset name from the path
-        nav_entry = f"*** xref:metric:{file_name}.adoc[{file_name}]\n\n"
-    elif 'modules/concept/pages/' == output_dir:
-        # Extract the dataset name from the path
-        nav_entry = f"*** xref:concept:{file_name}.adoc[{file_name}]\n\n"
-    elif 'modules/dataservice/pages/' == output_dir:
-        # Extract the dataset name from the path
-        nav_entry = f"*** xref:dataservice:{file_name}.adoc[{file_name}]\n\n"  
-    elif 'modules/dataset-series/pages/' == output_dir:
-        # Extract the dataset name from the path
-        nav_entry = f"*** xref:dataset-series:{file_name}.adoc[{file_name}]\n\n"                     
-    else:
-        # linkstr= output_dir+"/"+ file_name
-        # For catalog pages or other types, use a more general approach
-        nav_entry = f"*** xref:{output_dir}:{file_name}.adoc[{file_name}]\n\n"
+    # elif 'modules/data-catalog/pages/' == output_dir:  
+    #     nav_entry = f"* xref:data-catalog:{file_name}.adoc[{name}]\n\n" 
+    #     print("jackpot")
+    # elif 'modules/metric/pages/' == output_dir:
+    #     # Extract the dataset name from the path
+    #     nav_entry = f"*** xref:metric:{file_name}.adoc[{name}]\n\n"
+    # elif 'modules/concept/pages/' == output_dir:
+    #     # Extract the dataset name from the path
+    #     nav_entry = f"*** xref:concept:{file_name}.adoc[{name}]\n\n"
+    # elif 'modules/dataservice/pages/' == output_dir:
+    #     # Extract the dataset name from the path
+    #     nav_entry = f"*** xref:dataservice:{file_name}.adoc[{name}]\n\n"  
+    # elif 'modules/dataset-series/pages/' == output_dir:
+    #     # Extract the dataset name from the path
+    #     nav_entry = f"*** xref:dataset-series:{file_name}.adoc[{name}]\n\n"                     
+    # else:
+    #     # linkstr= output_dir+"/"+ file_name
+    #     # For catalog pages or other types, use a more general approach
+    #     nav_entry = f"*** xref:{output_dir}:{file_name}.adoc[{name}]\n\n"
     
     nav_file_path = 'modules/data-catalog/nav.adoc'
     
@@ -166,7 +168,7 @@ def add_to_nav(file_name: str, output_dir: str):
         
 
         with open(nav_file_path, 'a') as f:
-                f.write(nav_entry)
+                f.write(name)
         
         # if match:
         #     # Insert the new nav entry

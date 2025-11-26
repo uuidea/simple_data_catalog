@@ -49,6 +49,11 @@ def create_data_catalog(catalog_graph: Graph):
     for series in catalog_graph.subjects(RDF.type, DCAT.DatasetSeries):
         create_series_page(series=series, catalog_graph=catalog_graph)
 
+    create_nav_header(page_type="Data Services")
+    for dataservice in catalog_graph.subjects(RDF.type, DCAT.DataService):
+        create_dataservice_page(dataservice=dataservice,catalog_graph=catalog_graph)
+        
+
     create_nav_header(page_type="Datasets")
     for dataset in catalog_graph.subjects(RDF.type, DCAT.Dataset):
         create_dataset_page(dataset=dataset, catalog_graph=catalog_graph )
@@ -61,10 +66,7 @@ def create_data_catalog(catalog_graph: Graph):
     for metric in catalog_graph.subjects(RDF.type, DQV.Metric):
         create_metric_page(metric=metric,catalog_graph=catalog_graph)
 
-    create_nav_header(page_type="Data Services")
-    for dataservice in catalog_graph.subjects(RDF.type, DCAT.DataService):
-        create_dataservice_page(dataservice=dataservice,catalog_graph=catalog_graph)
-    
+
 
 
 

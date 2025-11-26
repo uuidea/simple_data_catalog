@@ -1,29 +1,29 @@
 
-* xref:data-catalog:abcde123.adoc[abcde123]
+
 
 ** Dataset Series 
 
-*** xref:dataset-series:abcde.adoc[abcde]
-
-** Datasets 
-
-*** xref:dataset:bvkljfhds.adoc[bvkljfhds]
-
-*** xref:dataset:herrcgre.adoc[herrcgre]
-
-** Concepts 
-
-*** xref:concept:def.adoc[def]
-
-*** xref:concept:abc.adoc[abc]
-
-*** xref:concept:bcd.adoc[bcd]
-
-** Metrics 
-
-*** xref:metric:fkrhkqewjewrc.adoc[fkrhkqewjewrc]
+xref:dataset-series:abcde.adoc[['all the datasets by this publisher']]
 
 ** Data Services 
 
-*** xref:dataservice:ewfalsdfh.adoc[ewfalsdfh]
+xref:dataservice:ewfalsdfh.adoc[['Example Service']]
+
+** Datasets 
+
+xref:dataset:bvkljfhds.adoc[test lineage dataset]
+
+xref:dataset:herrcgre.adoc[test dataset]
+
+** Concepts 
+
+xref:concept:def.adoc[data]
+
+xref:concept:abc.adoc[energy]
+
+xref:concept:bcd.adoc[test]
+
+** Metrics 
+
+xref:metric:fkrhkqewjewrc.adoc[['example metric']]
 
