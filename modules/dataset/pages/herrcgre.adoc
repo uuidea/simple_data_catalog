@@ -31,9 +31,9 @@ a| draft
 a| Format
 a| Access URL
 a| Issued
-a| —
+a| csv
 a| https://www.example.com/getyourdatahere.csv
-a| —
+a| 2025-11-26
 |=== 
 
 == Data quality 

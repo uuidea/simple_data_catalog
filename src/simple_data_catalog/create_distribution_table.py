@@ -1,11 +1,9 @@
 
 
-from rdflib import Namespace, URIRef, Graph
+from rdflib import Namespace, URIRef, Graph, DCTERMS, DCAT
 from simple_data_catalog.create_adoc_table import create_adoc_table
 
-# Define the DCAT namespace (used for linking distributions)
-DCAT = Namespace("http://www.w3.org/ns/dcat#")
-DCTERMS = Namespace("http://purl.org/dc/terms/")
+
 
 def create_distribution_table(dataset: URIRef, catalog_graph: Graph):
     """
@@ -36,11 +34,6 @@ def create_distribution_table(dataset: URIRef, catalog_graph: Graph):
         # No distributions – nothing to render
         return ""
 
-    # --------------------------------------------------------------
-    # 2️⃣  Get the dataset‑level ``dcterms:issued`` value (once)
-    # --------------------------------------------------------------
-    issued_val = catalog_graph.value(subject=dataset, predicate=DCTERMS.issued)
-    issued_str = str(issued_val) if issued_val else "—"
 
     # --------------------------------------------------------------
     # 3️⃣  Extract relevant information from each distribution
@@ -51,11 +44,15 @@ def create_distribution_table(dataset: URIRef, catalog_graph: Graph):
     for dist in distribution_uris:
         # dcterms:format (e.g. "csv")
         fmt = catalog_graph.value(subject=dist, predicate=DCTERMS.format)
+ 
         fmt_str = str(fmt) if fmt else "—"
 
         # dcat:accessURL (e.g. "https://example.com/file.csv")
         url = catalog_graph.value(subject=dist, predicate=DCAT.accessURL)
         url_str = str(url) if url else "—"
+
+        issued_val = catalog_graph.value(subject=dist, predicate=DCTERMS.issued)
+        issued_str = str(issued_val) if issued_val else "—"
 
         # Append the three cells for this row
         entries.extend([fmt_str, url_str, issued_str])

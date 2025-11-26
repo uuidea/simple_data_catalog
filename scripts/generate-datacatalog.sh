@@ -1,5 +1,8 @@
 #!/bin/bash
-
+uv run linkml-validate \
+    -s simple_data_catalog_model/src/simple_data_catalog_model/data-catalog.yaml \
+    data-catalog/data-catalog.yaml 
+    
 uv run linkml-convert \
     -s simple_data_catalog_model/src/simple_data_catalog_model/data-catalog.yaml \
     -t ttl \

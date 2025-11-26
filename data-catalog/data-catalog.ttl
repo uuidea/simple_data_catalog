@@ -38,6 +38,7 @@ ex:def a skos:Concept ;
 
 ex:fekfrbajr a dcat:Distribution ;
     dcterms:format "csv" ;
+    dcterms:issued "2025-11-26"^^xsd:date ;
     dcat:accessURL "https://www.example.com/getyourdatahere.csv" .
 
 ex:fkrhkqewjewrc a dqv:Metric ;

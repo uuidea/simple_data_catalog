@@ -23,8 +23,8 @@ datasets:
     license:
       title: cc-by 4.0
     temporal:
-      hasBeginning: 2025-01-01
-      hasEnd: 2025-12-31  
+      hasBeginning: "2025-01-01"
+      hasEnd: "2025-12-31"
     inSeries: ex:abcde
     distribution: ex:fekfrbajr
   - identifier: ex:bvkljfhds
@@ -40,8 +40,8 @@ datasets:
     license:
       title: cc-by 4.0
     temporal:
-      hasBeginning: 2025-01-01
-      hasEnd: 2025-12-31  
+      hasBeginning: "2025-01-01"
+      hasEnd: "2025-12-31" 
     inSeries: ex:abcde
     wasDerivedFrom:
       - ex:herrcgre
@@ -50,6 +50,7 @@ distributions:
   - identifier: ex:fekfrbajr
     format: csv
     accessURL: https://www.example.com/getyourdatahere.csv
+    issued: "2025-11-26"
 
 dataServices:
   - identifier: ex:ewfalsdfh
@@ -92,7 +93,7 @@ qualityMeasurements:
   - identifier: ex:sfasdggfvrln
     computedOn: ex:herrcgre
     isMeasurementOf: ex:fkrhkqewjewrc
-    generatedAtTime: 2025-04-22
+    generatedAtTime: "2025-04-22"
     value: 0.9
 
 
