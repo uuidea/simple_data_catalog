@@ -26,13 +26,13 @@ def create_local_link(resource: URIRef, catalog_graph: Graph)->str:
         local_link= f"xref:concept:{id}.adoc[{pref_label}]"
     elif rdf_type== DQV.Metric:
         pref_label=get_prefLabel(subject=resource, graph=catalog_graph)        
-        local_link= f"xref:metric:{id}.adoc[{[pref_label]}]"
+        local_link= f"xref:metric:{id}.adoc[{pref_label}]"
     elif rdf_type== DCAT.DataService:
         title= get_title(subject=resource, graph=catalog_graph)       
-        local_link= f"xref:dataservice:{id}.adoc[{[title]}]"  
+        local_link= f"xref:dataservice:{id}.adoc[{title}]"  
     elif rdf_type== DCAT.DatasetSeries:
         title= get_title(subject=resource, graph=catalog_graph)       
-        local_link= f"xref:dataset-series:{id}.adoc[{[title]}]"   
+        local_link= f"xref:dataset-series:{id}.adoc[{title}]"   
     else:
         local_link=""                
     
