@@ -52,5 +52,5 @@ def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-cat
 
 if __name__ == "__main__":
     catalog_graph=Graph()
-    catalog_graph.parse('test/testdata.ttl')
+    catalog_graph.parse('data-catalog/data-catalog.ttl')
     create_catalog_page(catalog_graph=catalog_graph)

@@ -32,7 +32,10 @@ def create_local_link(resource: URIRef, catalog_graph: Graph)->str:
         local_link= f"xref:dataservice:{id}.adoc[{title}]"  
     elif rdf_type== DCAT.DatasetSeries:
         title= get_title(subject=resource, graph=catalog_graph)       
-        local_link= f"xref:dataset-series:{id}.adoc[{title}]"   
+        local_link= f"xref:dataset-series:{id}.adoc[{title}]"  
+    elif rdf_type== DCAT.Catalog:
+        title= get_title(subject=resource, graph=catalog_graph)       
+        local_link= f"xref:dataset-series:{id}.adoc[{title}]"  
     else:
         local_link=""                
     
@@ -134,17 +137,13 @@ def add_to_nav(file_name: str, output_dir: str, resource: URIRef, catalog_graph:
     # Assuming the structure: modules/Dataset/pages/...
 
     name= create_local_link(resource=resource, catalog_graph=catalog_graph) + "\n\n"
-    # if 'modules/dataset/pages/' == output_dir:
-    #     # Extract the dataset name from the path
-    #     name=create_local_link(resource=resource, catalog_graph=catalog_graph)    
-    #     nav_entry = f"*** xref:dataset:{file_name}.adoc[{name}]\n\n"
 
-    # elif 'modules/data-catalog/pages/' == output_dir:  
-    #     nav_entry = f"* xref:data-catalog:{file_name}.adoc[{name}]\n\n" 
-    #     print("jackpot")
-    # elif 'modules/metric/pages/' == output_dir:
-    #     # Extract the dataset name from the path
-    #     nav_entry = f"*** xref:metric:{file_name}.adoc[{name}]\n\n"
+    if 'modules/data-catalog/pages/' == output_dir:  
+        nav_entry = f"* {name}" 
+
+    else :
+        # Extract the dataset name from the path
+        nav_entry = f"*** {name}"
     # elif 'modules/concept/pages/' == output_dir:
     #     # Extract the dataset name from the path
     #     nav_entry = f"*** xref:concept:{file_name}.adoc[{name}]\n\n"
@@ -168,7 +167,7 @@ def add_to_nav(file_name: str, output_dir: str, resource: URIRef, catalog_graph:
         
 
         with open(nav_file_path, 'a') as f:
-                f.write(name)
+                f.write(nav_entry)
         
         # if match:
         #     # Insert the new nav entry

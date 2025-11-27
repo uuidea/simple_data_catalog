@@ -9,9 +9,10 @@ from rdflib import Graph, RDF, DCAT, SKOS, Namespace
 import os
 
 from pathlib import Path
-
+DQV = Namespace("http://www.w3.org/ns/dqv#")
 
 def create_data_catalog(catalog_graph: Graph):
+
 
     ## delete old stuff
     if os.path.exists('modules/data-catalog/nav.adoc'):
@@ -43,7 +44,7 @@ def create_data_catalog(catalog_graph: Graph):
 """)       
         
     create_catalog_page(catalog_graph)
-    DQV = Namespace("http://www.w3.org/ns/dqv#")
+    
 
     create_nav_header(page_type= 'Dataset Series')
     for series in catalog_graph.subjects(RDF.type, DCAT.DatasetSeries):

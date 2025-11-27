@@ -25,7 +25,7 @@ a| draft
 
 == Served by services 
 
-xref:dataservice:ewfalsdfh.adoc[['Example Service']]
+xref:dataservice:ewfalsdfh.adoc[Example Service]
 
 
 == Distributions 
