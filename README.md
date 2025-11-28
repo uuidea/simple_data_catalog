@@ -68,7 +68,7 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
    cd my-data-catalog
    ```
 
-5. **(Optional) Initialise a Git repository** and push to the remote you specified:
+5. **Initialise a Git repository** and push to the remote you specified:
 
    ```bash
    git init
