@@ -1,0 +1,13 @@
+= example metric
+
+an example of a data quality metric
+
+Expected datatype: http://www.w3.org/2001/XMLSchema#float
+
+Datasets with quality measurements using this metric:
+
+[cols="1"]
+|=== 
+a| xref:dataset:herrcgre.adoc[test dataset]
+|=== 
+

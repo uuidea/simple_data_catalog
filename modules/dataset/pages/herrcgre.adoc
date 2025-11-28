@@ -1,0 +1,75 @@
+= test dataset
+
+== Description 
+
+None
+
+== Themes 
+
+xref:concept:abc.adoc[energy]
+xref:concept:bcd.adoc[test]
+xref:concept:def.adoc[data]
+
+== Overview 
+
+[cols="1,1"]
+|=== 
+a| Title
+a| test dataset
+a| Publisher
+a| my name
+a| License
+a| cc-by 4.0
+a| Status
+a| draft
+|=== 
+
+== Distributions 
+
+[cols="1,1,1"]
+|=== 
+a| Format
+a| Access URL
+a| Issued
+a| csv
+a| https://www.example.com/getyourdatahere.csv
+a| 2025-11-26
+|=== 
+
+== Data quality 
+
+[cols="1,1,1,1"]
+|=== 
+a| *Metric*
+a| *Value*
+a| *Time of evaluation*
+a| *Dimension*
+a| xref:metric:fkrhkqewjewrc.adoc[example metric]
+a| 0.9
+a| 2025-04-22
+a| Completeness
+|=== 
+
+
+
+== Data Lineage 
+
+=== Lineage visualized
+
+[mermaid, lineage, svg]
+---- 
+graph TD
+    herrcgre[test dataset]
+
+----
+
+=== Supply Chain Analysis
+
+[mermaid, supply-chain-analysis, svg]
+---- 
+pie
+    title Input Datasets Quality Measurements
+    "with quality measurements" : 0
+    "without quality measurements" : 0
+----
+
