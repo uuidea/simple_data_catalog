@@ -1,5 +1,5 @@
 dataCatalog:
-  identifier: ex:abcde123
+  identifier: this:abcde123
   description: a test data catalog created to validate the schema
   title: test data catalog
   publisher:

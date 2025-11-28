@@ -1,29 +1,22 @@
 @prefix adms: <http://www.w3.org/ns/adms#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcat1: <http://www.w3.org/ns/dcat> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dqv: <http://www.w3.org/ns/dqv#> .
 @prefix ex: <http://www.example.com/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix ns1: <https://www.uuidea.eu/profiles/data-catalog/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sdcdc: <https://www.uuidea.eu/profiles/data-catalog> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix this: <https://www.this.com#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:abcde123 a dcat:Catalog ;
-    dcterms:description "a test data catalog created to validate the schema" ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:name "my name" ] ;
-    dcterms:title "test data catalog" ;
-    dcat:dataset ex:bvkljfhds,
-        ex:herrcgre .
-
-ex:ewfalsdfh a dcat:DataService ;
+ex:ewfalsdfh a dcat1:DataService ;
     dcterms:description "example data sercvice like an openAPI endpoint" ;
     dcterms:title "Example Service" ;
-    dcat:endpointURL "https://www.example.com/getyourdatahere/" ;
-    dcat:servesDataset ex:bvkljfhds .
+    dcat1:endpointURL "https://www.example.com/getyourdatahere/" ;
+    dcat1:servesDataset ex:bvkljfhds .
 
 ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:computedOn ex:herrcgre ;
@@ -31,15 +24,23 @@ ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:value "0.9"^^xsd:float ;
     prov:generatedAtTime "2025-04-22"^^xsd:date .
 
+this:abcde123 a dcat1:Catalog ;
+    dcterms:description "a test data catalog created to validate the schema" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
+    dcterms:title "test data catalog" ;
+    dcat1:dataset ex:bvkljfhds,
+        ex:herrcgre .
+
 ex:def a skos:Concept ;
     skos:altLabel "information (leave a comment ;-))" ;
     skos:definition "data is plural of datum" ;
     skos:prefLabel "data" .
 
-ex:fekfrbajr a dcat:Distribution ;
+ex:fekfrbajr a dcat1:Distribution ;
     dcterms:format "csv" ;
     dcterms:issued "2025-11-26"^^xsd:date ;
-    dcat:accessURL "https://www.example.com/getyourdatahere.csv" .
+    dcat1:accessURL "https://www.example.com/getyourdatahere.csv" .
 
 ex:fkrhkqewjewrc a dqv:Metric ;
     skos:definition "an example of a data quality metric" ;
@@ -52,7 +53,7 @@ ex:abc a skos:Concept ;
     skos:definition "energy is energy" ;
     skos:prefLabel "energy" .
 
-ex:abcde a dcat:DatasetSeries ;
+ex:abcde a dcat1:DatasetSeries ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "My name" ] ;
     dcterms:title "all the datasets by this publisher" .
@@ -62,7 +63,7 @@ ex:bcd a skos:Concept ;
     skos:definition "test is just for testing" ;
     skos:prefLabel "test" .
 
-ex:bvkljfhds a dcat:Dataset ;
+ex:bvkljfhds a dcat1:Dataset ;
     dcterms:license [ a dcterms:LicenseDocument ;
             dcterms:title "cc-by 4.0" ] ;
     dcterms:publisher [ a foaf:Agent ;
@@ -71,15 +72,15 @@ ex:bvkljfhds a dcat:Dataset ;
     vcard:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "my.name@example.com" ] ;
     adms:status "draft" ;
-    dcat:inSeries ex:abcde ;
-    dcat:theme ex:abc,
+    dcat1:inSeries ex:abcde ;
+    dcat1:theme ex:abc,
         ex:bcd ;
-    dcat:version [ a dcterms:PeriodOfTime ;
+    dcat1:version [ a dcterms:PeriodOfTime ;
             time:hasBeginning "2025-01-01"^^xsd:date ;
             time:hasEnd "2025-12-31"^^xsd:date ] ;
     prov:wasDerivedFrom ex:herrcgre .
 
-ex:herrcgre a dcat:Dataset ;
+ex:herrcgre a dcat1:Dataset ;
     dcterms:license [ a dcterms:LicenseDocument ;
             dcterms:title "cc-by 4.0" ] ;
     dcterms:publisher [ a foaf:Agent ;
@@ -88,25 +89,25 @@ ex:herrcgre a dcat:Dataset ;
     vcard:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "my.name@example.com" ] ;
     adms:status "draft" ;
-    dcat:distribution ex:fekfrbajr ;
-    dcat:inSeries ex:abcde ;
-    dcat:theme ex:abc,
+    dcat1:distribution ex:fekfrbajr ;
+    dcat1:inSeries ex:abcde ;
+    dcat1:theme ex:abc,
         ex:bcd,
         ex:def ;
-    dcat:version [ a dcterms:PeriodOfTime ;
+    dcat1:version [ a dcterms:PeriodOfTime ;
             time:hasBeginning "2025-01-01"^^xsd:date ;
             time:hasEnd "2025-12-31"^^xsd:date ] .
 
-[] a ns1:Container ;
-    ns1:concepts ex:abc,
+[] a sdcdc:Container ;
+    sdcdc:concepts ex:abc,
         ex:bcd,
         ex:def ;
-    ns1:dataCatalog ex:abcde123 ;
-    ns1:dataServices ex:ewfalsdfh ;
-    ns1:datasets ex:bvkljfhds,
+    sdcdc:dataCatalog this:abcde123 ;
+    sdcdc:dataServices ex:ewfalsdfh ;
+    sdcdc:datasets ex:bvkljfhds,
         ex:herrcgre ;
-    ns1:distributions ex:fekfrbajr ;
-    ns1:metrics ex:fkrhkqewjewrc ;
-    ns1:qualityMeasurements ex:sfasdggfvrln ;
-    ns1:series ex:abcde .
+    sdcdc:distributions ex:fekfrbajr ;
+    sdcdc:metrics ex:fkrhkqewjewrc ;
+    sdcdc:qualityMeasurements ex:sfasdggfvrln ;
+    sdcdc:series ex:abcde .
 
