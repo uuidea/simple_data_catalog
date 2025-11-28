@@ -46,10 +46,9 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
    ```
 
 2. **Copy the template** to a new project directory.  
-   Replace `<template-url>` with the URL of this repository (or a local path if you have the repo cloned).
 
    ```bash
-   copier copy <template-url> my-data-catalog
+   copier copy https://github.com/uuidea/simple_data_catalog my-data-catalog
    ```
 
 3. **Answer the prompts** that Copier presents. They correspond to the variables defined in `copier.yaml`:
