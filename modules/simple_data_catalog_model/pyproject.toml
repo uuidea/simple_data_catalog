@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "simple_data_catalog_model"
+version = "0.0.10"
+authors = [
+  { name="Joep van Genuchten", email="joep@uuidea.eu" },
+]
+description = "linkml model for simple_data_catalog"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent"
+]
+
+dependencies = [
+    "linkml"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/simple_data_catalog_model"]
+
+
+[project.urls]
+Homepage = "https://github.com/uuidea/simple_data_catalog"
+Issues = "https://github.com/uuidea/simple_data_catalog/issues"
+

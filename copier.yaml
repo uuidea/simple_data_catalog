@@ -6,14 +6,19 @@ _skip_if_exists:
 
 # Prompt definitions (shown in the UI when someone runs `copier copy`)
 _answers:
-  project_name:
+  catalog_name:
     type: str
-    default: "simple-data-catalog"
-    help: "Human‑readable name of the generated project"
+    default: "your-data-catalog"
+    help: 
+      "Name of the data catalog. consider referencing the organization 
+      or (research) project that this catalog will be used for, like 
+      'My organizations data catalog'"
   github_repo:
     type: str
-    default: "yourusername/simple-data-catalog"
-    help: "GitHub repository URL (used for CI badges, etc.)"
+    default: "yourusername/your-data-catalog"
+    help: 
+      "GitHub repository URL where the catalog will be managed. This will 
+      also affect where it is hosted. It will be hosted at yourusername.github.io/your-data-catalog/ "
   namespace:
     type: str
     default: "https://www.example.com#"

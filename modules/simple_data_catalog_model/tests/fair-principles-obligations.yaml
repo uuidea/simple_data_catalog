@@ -1,0 +1,124 @@
+policies:
+  - uid: ex:fair-f1
+    description: Obligation for F1 - (meta)data are assigned a globally unique and eternally persistent identifier.
+    obligation:
+      - uid: ex:f1-obligation
+        action: manage
+        description: Obligation to assign globally unique and persistent identifiers to (meta)data.
+
+  - uid: fair-f2
+    description: Obligation for F2 - data are described with rich metadata.
+    obligation:
+      - uid: f2-obligation
+        action: odrl:manage
+        description: Obligation to describe data with rich metadata.
+
+  - uid: fair-f3
+    description: Obligation for F3 - (meta)data are registered or indexed in a searchable resource.
+    obligation:
+      - uid: f3-obligation
+        action: odrl:manage
+        description: Obligation to register or index (meta)data in a searchable resource.
+
+  - uid: fair-f4
+    description: Obligation for F4 - metadata specify the data identifier.
+    obligation:
+      - uid: f4-obligation
+        action: odrl:manage
+        description: Obligation to ensure metadata specify the data identifier
+  - uid: fair-a1
+    description: Obligation for A1 - (meta)data are retrievable by their identifier using a standardized communications protocol.
+    obligation:
+      - uid: a1-obligation
+        action: odrl:manage
+        description: Obligation to make (meta)data retrievable by identifier using a standardized protocol.
+
+  - uid: fair-a1-1
+    description: Obligation for A1.1 - The protocol is open, free, and universally implementable.
+    obligation:
+      - uid: a1-1-obligation
+        action: odrl:manage
+        description: Obligation to use an open, free, and universally implementable protocol.
+
+  - uid: fair-a1-2
+    description: Obligation for A1.2 - The protocol allows for an authentication and authorization procedure, where necessary.
+    obligation:
+      - uid: a1-2-obligation
+        action: odrl:manage
+        description: Obligation to allow authentication and authorization in the protocol where necessary.
+
+  - uid: fair-a2
+    description: Obligation for A2 - metadata are accessible, even when the data are no longer available.
+    obligation:
+      - uid: a2-obligation
+        action: odrl:manage
+        description: Obligation to keep metadata accessible even if data is unavailable.
+
+  - uid: fair-i1
+    description: Obligation for I1 - (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
+    obligation:
+      - uid: i1-obligation
+        action: odrl:manage
+        description: Obligation to use formal, accessible, shared, and broadly applicable languages for (meta)data.
+
+  - uid: fair-i2
+    description: Obligation for I2 - (meta)data use vocabularies that follow FAIR principles.
+    obligation:
+      - uid: i2-obligation
+        action: odrl:manage
+        description: Obligation to use FAIR-compliant vocabularies in (meta)data.
+
+  - uid: fair-i3
+    description: Obligation for I3 - (meta)data include qualified references to other (meta)data.
+    obligation:
+      - uid: i3-obligation
+        action: odrl:manage
+        description: Obligation to include qualified references to other (meta)data.
+
+  - uid: fair-r1
+    description: Obligation for R1 - meta(data) have a plurality of accurate and relevant attributes.
+    obligation:
+      - uid: r1-obligation
+        action: odrl:manage
+        description: Obligation to provide accurate and relevant attributes in meta(data).
+
+  - uid: fair-r1-1
+    description: Obligation for R1.1 - (meta)data are released with a clear and accessible data usage license.
+    obligation:
+      - uid: r1-1-obligation
+        action: odrl:manage
+        description: Obligation to release (meta)data with a clear and accessible license.
+
+  - uid: fair-r1-2
+    description: Obligation for R1.2 - (meta)data are associated with their provenance.
+    obligation:
+      - uid: r1-2-obligation
+        action: odrl:manage
+        description: Obligation to associate (meta)data with provenance information.
+
+  - uid: fair-r1-3
+    description: Obligation for R1.3 - (meta)data meet domain-relevant community standards.
+    obligation:
+      - uid: r1-3-obligation
+        action: odrl:manage
+        description: Obligation to ensure (meta)data meet domain-relevant community standards.
+
+sets:
+  - uid: fair-set
+    description: "ODRL Set representing all FAIR principles obligations"
+    obligation:
+      - fair-f1
+      - fair-f2
+      - fair-f3
+      - fair-f4
+      - fair-a1
+      - fair-a1-1
+      - fair-a1-2
+      - fair-a2
+      - fair-i1
+      - fair-i2
+      - fair-i3
+      - fair-r1
+      - fair-r1-1
+      - fair-r1-2
+      - fair-r1-3
