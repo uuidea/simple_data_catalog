@@ -17,5 +17,9 @@ _answers:
   namespace:
     type: str
     default: "https://www.example.com#"
-    help: provide the namespace in which you want to declare the uri's of your data catalog"
+    help: "provide the namespace in which you want to declare the uri's of your data catalog"
+  prefix:
+    type: str
+    default: "ex"
+    help: "provide the namespace prefix which you want to use as shorthand for "  
 
