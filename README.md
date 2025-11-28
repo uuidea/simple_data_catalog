@@ -65,13 +65,13 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 4. **Enter the new project**
 
    ```bash
-   cd my-data-catalog
+   cd <your-data-catalog>
    ```
 
 5. **Initialise a Git repository** and push to the remote you specified:
 
    ```bash
-   git init
+   git init -b main
    git remote add origin https://github.com/<yourusername>/<your-repo>.git
    git add .
    git commit -m "Initial commit from Copier template"
