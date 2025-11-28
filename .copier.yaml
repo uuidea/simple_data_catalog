@@ -28,3 +28,4 @@ _answers:
     default: "default"
     help: "provide the namespace prefix which you want to use as shorthand for "  
 
+_subdirectory: template
