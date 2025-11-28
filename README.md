@@ -75,7 +75,7 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
    git remote add origin https://github.com/<yourusername>/<your-repo>.git
    git add .
    git commit -m "Initial commit from Copier template"
-   git push -u origin master
+   git push -u origin main
    ```
 
 
