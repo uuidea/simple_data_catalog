@@ -14,4 +14,8 @@ _answers:
     type: str
     default: "yourusername/simple-data-catalog"
     help: "GitHub repository URL (used for CI badges, etc.)"
+  namespace:
+    type: str
+    default: "https://www.example.com#"
+    help: provide the namespace in which you want to declare the uri's of your data catalog"
 
