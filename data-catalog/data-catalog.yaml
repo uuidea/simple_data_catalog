@@ -1,12 +1,12 @@
 dataCatalog:
-  identifier: this:abcde123
+  identifier: ex:abcde123
   description: a test data catalog created to validate the schema
   title: test data catalog
   publisher:
     name: my name
-  dataset:
-    - ex:herrcgre
-    - ex:bvkljfhds
+  # dataset:
+  #   - ex:herrcgre
+  #   - ex:bvkljfhds
 
 datasets:
   - identifier: ex:herrcgre

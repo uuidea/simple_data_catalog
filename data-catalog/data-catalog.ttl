@@ -7,10 +7,15 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix sdcdc: <https://www.uuidea.eu/profiles/data-catalog> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix this: <https://www.this.com#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:abcde123 a dcat1:Catalog ;
+    dcterms:description "a test data catalog created to validate the schema" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "my name" ] ;
+    dcterms:title "test data catalog" .
 
 ex:ewfalsdfh a dcat1:DataService ;
     dcterms:description "example data sercvice like an openAPI endpoint" ;
@@ -24,13 +29,22 @@ ex:sfasdggfvrln a dqv:QualityMeasurement ;
     dqv:value "0.9"^^xsd:float ;
     prov:generatedAtTime "2025-04-22"^^xsd:date .
 
-this:abcde123 a dcat1:Catalog ;
-    dcterms:description "a test data catalog created to validate the schema" ;
+ex:bvkljfhds a dcat1:Dataset ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "my name" ] ;
-    dcterms:title "test data catalog" ;
-    dcat1:dataset ex:bvkljfhds,
-        ex:herrcgre .
+    dcterms:title "test lineage dataset" ;
+    vcard:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "my.name@example.com" ] ;
+    adms:status "draft" ;
+    dcat1:inSeries ex:abcde ;
+    dcat1:theme ex:abc,
+        ex:bcd ;
+    dcat1:version [ a dcterms:PeriodOfTime ;
+            time:hasBeginning "2025-01-01"^^xsd:date ;
+            time:hasEnd "2025-12-31"^^xsd:date ] ;
+    prov:wasDerivedFrom ex:herrcgre .
 
 ex:def a skos:Concept ;
     skos:altLabel "information (leave a comment ;-))" ;
@@ -63,23 +77,6 @@ ex:bcd a skos:Concept ;
     skos:definition "test is just for testing" ;
     skos:prefLabel "test" .
 
-ex:bvkljfhds a dcat1:Dataset ;
-    dcterms:license [ a dcterms:LicenseDocument ;
-            dcterms:title "cc-by 4.0" ] ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:name "my name" ] ;
-    dcterms:title "test lineage dataset" ;
-    vcard:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "my.name@example.com" ] ;
-    adms:status "draft" ;
-    dcat1:inSeries ex:abcde ;
-    dcat1:theme ex:abc,
-        ex:bcd ;
-    dcat1:version [ a dcterms:PeriodOfTime ;
-            time:hasBeginning "2025-01-01"^^xsd:date ;
-            time:hasEnd "2025-12-31"^^xsd:date ] ;
-    prov:wasDerivedFrom ex:herrcgre .
-
 ex:herrcgre a dcat1:Dataset ;
     dcterms:license [ a dcterms:LicenseDocument ;
             dcterms:title "cc-by 4.0" ] ;
@@ -102,7 +99,7 @@ ex:herrcgre a dcat1:Dataset ;
     sdcdc:concepts ex:abc,
         ex:bcd,
         ex:def ;
-    sdcdc:dataCatalog this:abcde123 ;
+    sdcdc:dataCatalog ex:abcde123 ;
     sdcdc:dataServices ex:ewfalsdfh ;
     sdcdc:datasets ex:bvkljfhds,
         ex:herrcgre ;

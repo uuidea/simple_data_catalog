@@ -14,8 +14,6 @@ import re
 def create_catalog_page(catalog_graph: Graph, output_dir: str= 'modules/data-catalog/pages/'):
     adoc_str= str()
 
-
-
     catalog=None
     for datacat in catalog_graph.subjects(RDF.type, DCAT.Catalog):
         catalog=datacat

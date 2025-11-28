@@ -1,2 +1,16 @@
 prefixes:
    this: https://www.this.com#
+   linkml: https://w3id.org/linkml/
+   sdcdc: https://www.uuidea.eu/profiles/data-catalog
+   dcat: http://www.w3.org/ns/dcat
+   odrl:	http://www.w3.org/ns/odrl/2/
+   prov:	http://www.w3.org/ns/prov#
+   xsd:	http://www.w3.org/2001/XMLSchema#
+   skos:	http://www.w3.org/2004/02/skos/core#
+   dcterms:	http://purl.org/dc/terms/
+   foaf: http://xmlns.com/foaf/0.1/
+   vcard: http://www.w3.org/2006/vcard/ns
+   time:  	http://www.w3.org/2006/time#
+   dqv: 	http://www.w3.org/ns/dqv#
+   ex: http://www.example.com/
+   adms:  http://www.w3.org/ns/adms#
