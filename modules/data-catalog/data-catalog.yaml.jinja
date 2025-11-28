@@ -1,0 +1,100 @@
+dataCatalog:
+  identifier: ex:{{catalog_name}}
+  description: a test data catalog created to validate the schema
+  title: test data catalog
+  publisher:
+    name: my name
+  # dataset:
+  #   - ex:herrcgre
+  #   - ex:bvkljfhds
+
+datasets:
+  - identifier: ex:herrcgre
+    title: test dataset
+    publisher:
+      name : my name
+    contactPoint: 
+      hasEmail: my.name@example.com
+    status: draft
+    theme:
+      - ex:abc
+      - ex:bcd
+      - ex:def
+    license:
+      title: cc-by 4.0
+    temporal:
+      hasBeginning: "2025-01-01"
+      hasEnd: "2025-12-31"
+    inSeries: ex:abcde
+    distribution: ex:fekfrbajr
+  - identifier: ex:bvkljfhds
+    title: test lineage dataset
+    publisher:
+      name : my name
+    contactPoint: 
+      hasEmail: my.name@example.com
+    status: draft
+    theme:
+      - ex:abc
+      - ex:bcd
+    license:
+      title: cc-by 4.0
+    temporal:
+      hasBeginning: "2025-01-01"
+      hasEnd: "2025-12-31" 
+    inSeries: ex:abcde
+    wasDerivedFrom:
+      - ex:herrcgre
+
+distributions:
+  - identifier: ex:fekfrbajr
+    format: csv
+    accessURL: https://www.example.com/getyourdatahere.csv
+    issued: "2025-11-26"
+
+dataServices:
+  - identifier: ex:ewfalsdfh
+    title: Example Service
+    servesDataset: 
+      - ex:bvkljfhds
+    description: example data sercvice like an openAPI endpoint
+    endpointURL: https://www.example.com/getyourdatahere/
+    # conformsTo: https://www.example.com/link-to-documentation
+
+concepts:
+  - prefLabel: energy
+    identifier: ex:abc
+    definition: energy is energy
+    altLabel: juice
+  - prefLabel: test
+    identifier: ex:bcd
+    definition: test is just for testing
+    altLabel: practice  
+  - prefLabel: data
+    identifier: ex:def
+    definition: data is plural of datum
+    altLabel: information (leave a comment ;-))  
+
+series:
+  - identifier: ex:abcde
+    title: all the datasets by this publisher
+    publisher:
+      name: My name
+
+metrics:
+  - identifier: ex:fkrhkqewjewrc
+    prefLabel: example metric
+    definition: an example of a data quality metric
+    expectedDataType: xsd:float
+    inDimension: Completeness
+
+
+qualityMeasurements:
+  - identifier: ex:sfasdggfvrln
+    computedOn: ex:herrcgre
+    isMeasurementOf: ex:fkrhkqewjewrc
+    generatedAtTime: "2025-04-22"
+    value: 0.9
+
+
+

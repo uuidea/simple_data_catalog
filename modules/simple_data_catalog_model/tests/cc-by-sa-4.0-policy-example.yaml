@@ -1,0 +1,19 @@
+policies:
+  - uid: cc-by-sa-4.0
+    type: Set
+    permission:
+      - action: use
+
+      - action: distribute
+
+      - action: derive
+
+        duty:
+          - action: attribute
+            target: work
+          - action: grantUse
+            target: derivative_work
+            constraint:
+              - leftOperand: hasPolicy
+                operator: eq
+                rightOperand: cc-by-sa-4.0

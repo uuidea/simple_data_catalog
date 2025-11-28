@@ -1,0 +1,25 @@
+offers:
+  - uid: open-data
+    description: 
+      this policy describes the usage rights for open data
+    permission: open-data-use  
+
+
+permissions:
+  - uid: open-data-use  
+    
+
+
+sets:
+  - uid: FAIR
+    description: tests
+      Policy that governs FAIR data
+    obligation: 
+      - F1
+
+
+obligations:
+  - uid: F1
+    description: 
+      data are assigned globally unique and persistent identifiers
+    action: manage

@@ -1,0 +1,84 @@
+{
+  "dataCatalog": {
+    "identifier": "ex:fhwiehduwke",
+    "description": "a test data catalog created to validate the schema",
+    "title": "test data catalog",
+    "dataset": [
+      "ex:herrcgre"
+    ]
+  },
+  "datasets": [
+    {
+      "identifier": "ex:herrcgre",
+      "title": "test dataset",
+      "publisher": {
+        "name": "my name"
+      },
+      "contactPoint": {
+        "hasEmail": "my.name@example.com"
+      },
+      "license": {
+        "title": "cc-by 4.0"
+      },
+      "status": "draft",
+      "theme": [
+        "ex:abc",
+        "ex:bcd",
+        "ex:def"
+      ],
+      "temporal": {
+        "hasBeginning": "2025-01-01",
+        "hasEnd": "2025-12-31"
+      },
+      "inSeries": "ex:abcde"
+    }
+  ],
+  "concepts": [
+    {
+      "identifier": "ex:abc",
+      "prefLabel": "energy",
+      "definition": "energy is energy",
+      "altLabel": "juice"
+    },
+    {
+      "identifier": "ex:bcd",
+      "prefLabel": "test",
+      "definition": "test is just for testing",
+      "altLabel": "practice"
+    },
+    {
+      "identifier": "ex:def",
+      "prefLabel": "data",
+      "definition": "data is plural of datum",
+      "altLabel": "information (leave a comment ;-))"
+    }
+  ],
+  "series": [
+    {
+      "identifier": "ex:abcde",
+      "title": "all the datasets by this publisher",
+      "publisher": {
+        "name": "My name"
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "identifier": "ex:fkrhkqewjewrc",
+      "prefLabel": "example metric",
+      "definition": "an example of a data quality metric",
+      "expectedDataType": "xsd:float",
+      "inDimension": "Completeness"
+    }
+  ],
+  "qualityMeasurements": [
+    {
+      "identifier": "ex:sfasdggfvrln",
+      "computedOn": "ex:herrcgre",
+      "isMeasurementOf": "ex:fkrhkqewjewrc",
+      "generatedAtTime": "2025-04-22",
+      "value": "string"
+    }
+  ],
+  "@type": "Container"
+}

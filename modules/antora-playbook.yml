@@ -5,7 +5,7 @@ content:
   sources: 
   - url: . # https://uuidea.github.io/simple_data_catalog/
     branches: main
-    start_page: data-catalog:data-catalog:fhwiehduwke.adoc
+    start_page: data-catalog:data-catalog:{{catalog_name}}.adoc
     
 ui: 
   bundle:

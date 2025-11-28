@@ -1,0 +1,292 @@
+id: https://www.uuidea.eu/profiles/policy
+name: data_catalog_model
+prefixes:
+  linkml: https://w3id.org/linkml/
+  sdcp: https://w3id.org/simpledatacatalog/policy/
+  dcat: http://www.w3.org/ns/dcat#
+  odrl:  http://www.w3.org/ns/odrl/2/
+  prov:  http://www.w3.org/ns/prov#
+  xsd:  http://www.w3.org/2001/XMLSchema#
+  skos:  http://www.w3.org/2004/02/skos/core#
+  dcterms:  http://purl.org/dc/terms/
+  foaf: http://xmlns.com/foaf/0.1/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  time:    http://www.w3.org/2006/time#
+  dqv:   http://www.w3.org/ns/dqv#
+  ex: http://www.example.com/
+  adms:  http://www.w3.org/ns/adms#
+imports:
+  - linkml:types
+
+# default_prefix: sdc
+
+#########################
+# Classes (entities)   #
+#########################
+classes:
+  Any:
+    class_uri: linkml:Any
+  # Policy – now inherits from the default LinkML base
+  Policy:
+    class_uri: odrl:Policy
+    description:
+      '''
+      The Policy class has the following properties:
+
+          A Policy MUST have one uid property value (of type IRI [rfc3987]) to identify the Policy.
+          A Policy MUST have at least one permission, prohibition, or obligation property values of type Rule. (See the Permission, Prohibition, and Obligation sections for more details.)
+          A Policy MAY have none, one, or many profile property values (of type IRI [rfc3987]) to identify the ODRL Profile that this Policy conforms to. (See the ODRL Profiles section for more details.)
+          A Policy MAY have none, one, or many inheritFrom property values (of type IRI [rfc3987]) to identify the parent Policy from which this child Policy inherits from. (See the ODRL Inheritance section for more details.)
+          A Policy MAY have none or one conflict property values (of type ConflictTerm) for Conflict Strategy Preferences indicating how to handle Policy conflicts.(See the Policy Conflict Strategy section for more details.)
+
+      An ODRL Policy MAY also declare properties which are shared and common to all its Rules. Specifically; action properties, sub-properties of relation (such as target), and sub-properties of function (such as assigner and assignee). See section Compact Policy for validation requirements on these shared properties.
+
+      An ODRL Policy must either:
+
+          Only use terms defined in the ODRL Core Vocabulary [odrl-vocab], or
+          Use an ODRL Profile that declares the supported vocabulary used by expressions in the Policy.
+
+      In the latter case, the profile property MUST be used to indicate the IRIs of the ODRL Profile(s). See the ODRL Profiles section for more details on mechanisms to define ODRL Profiles and conformance requirements. (The Examples in this document will use ODRL Profile identifiers for illustrative purposes only.)
+
+       An ODRL Policy MAY be subclassed to more precisely describe the context of use of the Policy that MAY include additional constraints that ODRL processors MUST understand. Additional Policy subclasses MAY be documented in the ODRL Common Vocabulary [odrl-vocab] or in ODRL Profiles. A Policy class MUST be disjoint will all Policy subclasses (except for Set).
+        '''
+    attributes:
+      - uid
+      - description   
+      - obligation
+      - permission
+      - prohibition
+ 
+
+  Set:
+    is_a: Policy
+    class_uri: odrl:Set
+    description: "ODRL Set policy, the default subclass of Policy, representing any combination of Rules"
+
+  Rule:
+    class_uri: odrl:Rule
+    description:
+      '''The Rule class is the parent of the Permission, Prohibition, and Duty classes. The Rule class represents the common characteristics of these three classes. A Rule class MUST be disjoint with all other Rule subclasses.
+
+      The Rule class has the following properties:
+
+          A Rule MUST have one action property value of type Action.
+          A Rule MAY have none or one relation sub-property values of type Asset.
+          A Rule MAY have none, one or many function sub-property values of type Party.
+          A Rule MAY have none, one or many failure sub-property values of type Rule.
+          A Rule MAY have none, one or many constraint property values of type Constraint/LogicalConstraint.
+          A Rule MAY have none or one uid property values (of type IRI [rfc3987]) to identify the Rule so it MAY be referenced by other Rules.
+
+      Note: The above property cardinalities reflect the normative ODRL Information Model. In some cases, repeat occurrences of some properties are also supported (as described in Policy Rule Composition and Compact Policy) but the normative atomic Policy is consistent with the above property cardinalities.
+
+        Explicit sub-properties of the abstract relation, relation and failure properties must be used, the choice depending on the subclass of Rule in question.'''
+    slots:
+      - description
+      - action
+      - constraint
+
+  # Rule – abstract, now directly under the default base
+
+
+  Permission:
+    is_a: Rule
+    class_uri: odrl:Permission
+    description: Grants the assignee the right to perform an action.
+    slots:
+      - duty
+
+  Prohibition:
+    is_a: Rule
+    class_uri: odrl:Prohibition
+    description: Denies the assignee the right to perform an action.
+    slots:
+      - remedy
+
+  # Invalid:
+  #   is_a: Rule
+  #   class_uri: odrl:Invalid
+  #   description: Marks a rule as invalid.
+
+  Duty:
+    class_uri: odrl:Duty
+    is_a: Rule
+    description: An obligation attached to a permission or prohibition.
+    slots:
+      - uid
+      - description
+      # - type
+      # - profile
+      - action
+      # - assignee
+      # - assigner
+      # - constraint
+      # - consequence
+
+  # Constraint:
+  #   description:
+  #     '''
+  #     Constraints are boolean/logical expressions that can be used to refine the semantics of an Action and Party/Asset Collection or declare the conditions applicable to a Rule. Constraints can be represented as a Constraint class or Logical Constraint class. A Logical Constraint will refer to existing Constraints as its operands. When multiple Constraints apply to the same Rule, Action, Party/Asset Collection, then they are interpreted as conjunction and all MUST be satisfied.
+  #     '''
+  #   class_uri: odrl:Constraint
+  #   slots:
+  #     - uid
+  #     - type
+  #     - profile
+      # - leftOperand
+      # - operator
+      # - rightOperand
+      # - rightOperandReference
+      # - unit
+      # - dataType
+
+  Container:
+    tree_root: true
+    attributes:
+      policies:
+        multivalued: true
+        inlined_as_list: true
+        range: Policy
+        required: false
+      sets:
+        multivalued: true
+        inlined_as_list: true
+        range: Set
+        required: false
+
+
+slots:
+  uid:
+    identifier: true
+    description: "Unique identifier for the policy or rule"
+    slot_uri: dcterms:identifier
+    range: string
+    required: true
+
+  description:
+    description: "Description of the policy or rule"
+    slot_uri: dcterms:description
+    range: string
+    required: false
+
+  action:
+    description: "The action to be performed"
+    slot_uri: odrl:action
+    range: string
+    required: true
+
+  constraint:
+    description: "Constraints on the rule"
+    slot_uri: odrl:constraint
+    multivalued: true
+    required: false
+  
+  permission:
+     description: "Permissions in the policy"
+     slot_uri: odrl:permission
+     range: Permission
+     multivalued: true
+     required: false
+
+  obligation:
+     description: "Obligations in the policy"
+     slot_uri: odrl:obligation
+     range: Any
+     multivalued: true
+     inlined_as_list: true
+     required: false
+
+  prohibition:
+    description: "Prohibitions in the policy"
+    slot_uri: odrl:prohibition
+    range: Prohibition
+    multivalued: true
+    required: false
+
+  inheritFrom:
+    description: "Policies from which this policy inherits rules"
+    slot_uri: odrl:inheritFrom
+    range: string
+    multivalued: true
+    required: false
+
+  duty:
+    description: "Duties attached to permissions"
+    slot_uri: odrl:duty
+    range: Duty
+    multivalued: true
+    required: false
+
+  remedy:
+    description: "Remedies for prohibitions"
+    slot_uri: odrl:remedy
+    range: Duty
+    multivalued: true
+    required: false
+
+  type:
+    description: "Type of the duty or constraint"
+    slot_uri: odrl:type
+    range: string
+    required: false
+
+  profile:
+    description: "ODRL profile"
+    slot_uri: odrl:profile
+    range: string
+    required: false
+
+  # assignee:
+  #   description: "Assignee of the duty"
+  #   slot_uri: odrl:assignee
+  #   range: string
+  #   required: false
+
+  # assigner:
+  #   description: "Assigner of the duty"
+  #   slot_uri: odrl:assigner
+  #   range: string
+  #   required: false
+
+  # consequence:
+  #   description: "Consequences of the duty"
+  #   slot_uri: odrl:consequence
+  #   range: Duty
+  #   multivalued: true
+  #   required: false
+
+  # leftOperand:
+  #   description: "Left operand of the constraint"
+  #   slot_uri: odrl:leftOperand
+  #   range: string
+  #   required: true
+
+  # operator:
+  #   description: "Operator of the constraint"
+  #   slot_uri: odrl:operator
+  #   range: string
+  #   required: true
+
+  # rightOperand:
+  #   description: "Right operand of the constraint"
+  #   slot_uri: odrl:rightOperand
+  #   range: Any
+  #   required: false
+
+  # rightOperandReference:
+  #   description: "Reference to right operand"
+  #   slot_uri: odrl:rightOperandReference
+  #   range: string
+  #   required: false
+
+  # unit:
+  #   description: "Unit for the constraint"
+  #   slot_uri: odrl:unit
+  #   range: string
+  #   required: false
+
+  # dataType:
+  #   description: "Data type for the constraint"
+  #   slot_uri: odrl:dataType
+  #   range: string
+  #   required: false
+
