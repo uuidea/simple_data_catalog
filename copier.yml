@@ -5,7 +5,7 @@ _skip_if_exists:
   - docs               # generated output, not part of the template
 
 # Prompt definitions (shown in the UI when someone runs `copier copy`)
-_answers:
+_questions:
   catalog_name:
     type: str
     default: "your-data-catalog"
