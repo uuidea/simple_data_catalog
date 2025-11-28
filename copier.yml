@@ -5,27 +5,26 @@ _skip_if_exists:
   - docs               # generated output, not part of the template
 
 # Prompt definitions (shown in the UI when someone runs `copier copy`)
-_questions:
-  catalog_name:
-    type: str
-    default: "your-data-catalog"
-    help: 
-      "Name of the data catalog. consider referencing the organization 
-      or (research) project that this catalog will be used for, like 
-      'My organizations data catalog'"
-  # github_repo:
-  #   type: str
-  #   default: "yourusername/your-data-catalog"
-  #   help: 
-  #     "GitHub repository URL where the catalog will be managed. This will 
-  #     also affect where it is hosted. It will be hosted at yourusername.github.io/your-data-catalog/ "
-  namespace:
-    type: str
-    default: "https://www.example.com#"
-    help: "provide the namespace in which you want to declare the uri's of your data catalog"
-  prefix:
-    type: str
-    default: "default"
-    help: "provide the namespace prefix which you want to use as shorthand for "  
+catalog_name:
+  type: str
+  default: "your-data-catalog"
+  help: 
+    "Name of the data catalog. consider referencing the organization 
+    or (research) project that this catalog will be used for, like 
+    'My organizations data catalog'"
+# github_repo:
+#   type: str
+#   default: "yourusername/your-data-catalog"
+#   help: 
+#     "GitHub repository URL where the catalog will be managed. This will 
+#     also affect where it is hosted. It will be hosted at yourusername.github.io/your-data-catalog/ "
+namespace:
+  type: str
+  default: "https://www.example.com#"
+  help: "provide the namespace in which you want to declare the uri's of your data catalog"
+prefix:
+  type: str
+  default: "default"
+  help: "provide the namespace prefix which you want to use as shorthand for "  
 
 _subdirectory: template
