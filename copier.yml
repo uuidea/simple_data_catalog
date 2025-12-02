@@ -1,7 +1,6 @@
 # copier.yml
 _skip_if_exists:
   - .git
-  - .github
   - docs               # generated output, not part of the template
 
 # Prompt definitions (shown in the UI when someone runs `copier copy`)
