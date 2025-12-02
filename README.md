@@ -76,23 +76,22 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
    git add .
    git commit -m "Initial commit from Copier template"
    git push -u origin main
+
    ```
+
+ 6.  **Enable GitHub Pages**
+
+   1. Go to your repository on GitHub → **Settings** → **Pages**.  
+   2. Under **Source**, select the `main` branch and the `/` (root) folder.  
+   3. Click **Save**.  
+   4. GitHub will publish the site at `https://<your‑username>.github.io/<your‑repo>/`.  
+
 
 
 + **Data Catalog initialization**
 +
 + This repository’s GitHub Actions workflow automatically creates and populates the minimal RDF data catalog during CI/CD. No manual script execution is required.
-+
-+ If you need to generate the catalog locally for debugging or custom processing, you can still run the helper script as described in the previous version of this README. However, for typical usage just rely on the CI pipeline.
 
-
-**What the script does (for reference)**
-
-- Creates an `rdflib.Graph` instance.  
-- Populates it with basic catalog metadata (e.g., identifier, title, publisher) using the prefixes defined in `data-catalog.yaml`.  
-- Deletes any previously generated triples (see the placeholder `## delete old stuff` comment).  
-
-You can still embed the function in your own pipeline or extend it to ingest datasets, add provenance, etc., but the primary catalog generation is handled by the CI pipeline. 
 
 
 ## Folder Overview
