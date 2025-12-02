@@ -39,19 +39,19 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 
 ## Getting Started with Copier
 
-1. **Install Copier** (once globally or inside a virtual environment)
+### 1. **Install Copier** (once globally or inside a virtual environment)
 
    ```bash
    pip install copier
    ```
 
-2. **Copy the template** to a new project directory.  
+### 2. **Copy the template** to a new project directory.  
 
    ```bash
    copier copy https://github.com/uuidea/simple_data_catalog my-data-catalog
    ```
 
-3. **Answer the prompts** that Copier presents. They correspond to the variables defined in `copier.yaml`:
+### 3. **Answer the prompts** that Copier presents. They correspond to the variables defined in `copier.yaml`:
 
    | Prompt | Meaning |
    |--------|---------|
@@ -82,9 +82,8 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
  6.  **Enable GitHub Pages**
 
    1. Go to your repository on GitHub → **Settings** → **Pages**.  
-   2. Under **Source**, select the `main` branch and the `/` (root) folder.  
-   3. Click **Save**.  
-   4. GitHub will publish the site at `https://<your‑username>.github.io/<your‑repo>/`.  
+   2. Under **Source**, select the 'Github Actions' option  
+   3. GitHub will publish the site at `https://<your‑username>.github.io/<your‑repo>/`.  
 
 
 
@@ -94,7 +93,7 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 
 
 
-## Folder Overview
+<!-- ## Folder Overview
 
 ```
 /copier.yaml                         # Copier template definition
@@ -106,7 +105,7 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
             data-catalog.yaml        # LinkML schema (prefixes, classes)
         simple_data_catalog/
             create_data_catalog.py   # Helper to bootstrap a catalog graph
-```
+``` -->
 
 ---
 
@@ -127,4 +126,4 @@ This template is released under the **GPL** – see the `LICENSE` file for detai
 
 ---
 
-**Happy cataloguing!** If you run into trouble, consult the Copier documentation (`copier --help`) or the LinkML docs (https://linkml.io).
+**Happy cataloguing!** If you run into trouble, consult the Copier documentation (`copier --help`) or the LinkML docs (https://linkml.io), or drop an Issue.
