@@ -1,2 +1,0 @@
-# simple_data_catalog_model
-simple_data_catalog_model

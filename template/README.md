@@ -70,7 +70,7 @@ dataServices:
 
 Add entries under the respective top‑level keys (`concepts`, `series`, `metrics`, `qualityMeasurements`) following the same pattern as above.  
 
-**Tip:** Keep the YAML tidy by using the existing sections as templates. The `generate-datacatalog.sh` script (triggered by CI) will automatically render the yaml into the final TTL file, as well ass the published catalog
+**Tip:** Keep the YAML tidy by using the existing sections as templates. The `generate-datacatalog.sh` script (triggered by CI) will automatically render the yaml into the final TTL file, as well ass the published catalog.
 
 ---
 
