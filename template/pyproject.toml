@@ -71,6 +71,7 @@ dependencies = [
     "pyyaml",
     "linkml>=1.0",
     "rdflib",
+    "simple_data_catalog @ git+https://github.com/uuidea/simple-data-catalog-generator.git",
 ]
 
 [project.urls]
