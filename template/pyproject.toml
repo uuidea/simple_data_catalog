@@ -1,51 +1,9 @@
-# [build-system]
-# requires = ["hatchling"]
-# build-backend = "hatchling.build"
-
-# [project]
-# name = "simple_data_catalog"
-# version = "0.0.1"
-# authors = [
-#   { name="Joep van Genuchten", email="joep@uuidea.eu" },
-# ]
-# description = "A simple package that supports data catalogging for small organizations and projects"
-# readme = "README.md"
-# requires-python = ">=3.8"
-# classifiers = [
-#     "Programming Language :: Python :: 3",
-#     "License :: OSI Approved :: Apache Software License",
-#     "Operating System :: OS Independent",
-# ]
-# [tool.hatch.metadata]
-# allow-direct-references= true
-# dependencies = [
-#     "pandas",
-#     "matplotlib",
-#     "wordcloud",
-#     "validators",
-#     "pydantic",
-#     "asciidoc3",
-#     "jinja2",
-#     "argparse",
-#     # "pathlib",
-#     "rich",
-#     "dataclasses",
-#     "pyyaml",
-#     "linkml>=1.0",        # provides `linkml-convert`
-#     "rdflib>=7.0",
-# ]
-
-
-# [project.urls]
-# Homepage = "https://github.com/uuidea/simple_data_catalog"
-# Issues = "https://github.com/uuidea/simple_data_catalog/issues"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "simple_data_catalog"
+name = "simple_data_catalog_template"
 version = "0.0.1"
 authors = [{ name="Joep van Genuchten", email="joep@uuidea.eu" }]
 description = "A simple package that supports data catalogging for small organizations and projects"
