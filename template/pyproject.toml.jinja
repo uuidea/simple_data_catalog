@@ -29,13 +29,19 @@ dependencies = [
     "pyyaml",
     "linkml>=1.0",
     "rdflib",
-    "simple_data_catalog @ git+https://github.com/uuidea/simple-data-catalog-generator.git",
+    "simple_data_catalog_generator @ git+https://github.com/uuidea/simple-data-catalog-generator.git",
 ]
 
 [project.urls]
 Homepage = "https://github.com/uuidea/simple_data_catalog"
 Issues   = "https://github.com/uuidea/simple_data_catalog/issues"
 
+[tool.uv]
+package = false
+
 [tool.hatch.metadata]
 allow-direct-references = true
+
+
+
 # (you can delete the old `dependencies = [...]` block that was under this table)
