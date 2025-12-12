@@ -11,6 +11,6 @@ uv run linkml-convert \
     data-catalog/data-catalog.yaml
 
 
-uv run python -m create_data_catalog_generator.create_data_catalog # this needs to be checked
+uv run python -m simple_data_catalog_generator.create_data_catalog # this needs to be checked
 
 # npx antora antora-playbook.yml
