@@ -37,6 +37,8 @@ jobs:
         python-version: "3.12.7"
     - name: Install uv 0.7.8
       run: curl -LsSf https://astral.sh/uv/0.7.8/install.sh | sh
+    - name: uv lock
+      run: uv lock
     - name: Install Python project dependencies
       run: uv sync --no-dev --no-install-project --locked
     - name: Generate Data Catalog
