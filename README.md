@@ -48,7 +48,7 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 ### 2. **Copy the template** to a new project directory.  
 
    ```bash
-   copier copy https://github.com/uuidea/simple_data_catalog my-data-catalog
+   copier copy https://github.com/uuidea/simple_data_catalog <your-data-catalog>
    ```
 
 ### 3. **Answer the prompts** that Copier presents. They correspond to the variables defined in `copier.yaml`:
