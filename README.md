@@ -87,11 +87,6 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 
 
 
-+ **Data Catalog initialization**
-+
-+ This repository’s GitHub Actions workflow automatically creates and populates the minimal RDF data catalog during CI/CD. No manual script execution is required.
-
-
 
 <!-- ## Folder Overview
 
