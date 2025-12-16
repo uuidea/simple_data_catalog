@@ -25,7 +25,7 @@ prefix:
   type: str
   default: "default"
   help: "provide the namespace prefix which you want to use as shorthand for "  
-licence:
+license:
   type: str
   default: "https://creativecommons.org/licenses/by-sa/4.0/"
   help: "The license under which the catalog is published. Preferably a link to the licence text, otherwise the title of a common license, like 'CC-BY 4.0' will do"  
