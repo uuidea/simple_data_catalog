@@ -113,6 +113,11 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 ``` -->
 
 ---
+## Additional Documentation
+
+The definitions of all the objects and attibutes can be found in the [simple_data_catalog_model documentation](https://uuidea.github.io/simple_data_catalog_model/documentation/schema/index.html) 
+
+
 
 ## Contributing
 
