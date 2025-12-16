@@ -3,6 +3,12 @@
 A lightweight, **LinkML‑based** template for creating and managing a DCAT‑compatible data catalog.  
 The repository ships with a Copier template, a reference DCAT vocabulary, a LinkML schema, and a helper script to bootstrap a catalog graph.
 
+## WARNING
+
+***This project is pre-production. Backwards compatibility is not yet guaranteed.
+While the ultimate goal for the project is to valdiate against [DCAT AP](https://op.europa.eu/en/web/eu-vocabularies/dcat-ap) this is currently not the case yet. As the remaining issues will be fixed, this might result in incompatibility with the current data format.***
+
+
 ---
 
 ## Table of Contents
