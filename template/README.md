@@ -22,7 +22,7 @@ While the ultimate goal for the project is to valdiate against [DCAT AP](https:/
 ## Adding Content to the Catalog
 
 All catalog metadata lives in `data-catalog/data-catalog.yaml`.  
-The file follows a **LinkML** schema (see `simple_data_catalog_model/.../data-catalog.yaml`).  
+The file follows a **LinkML** schema (see [simple_data_catalog_model](https://uuidea.github.io/simple_data_catalog_model/documentation/schema/index.html)).  
 
 ### 1. Datasets
 

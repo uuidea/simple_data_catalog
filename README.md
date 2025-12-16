@@ -78,13 +78,13 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 
    The defaults are sensible placeholders; feel free to replace them with your own values.
 
-4. **Enter the new project**
+### 4. **Enter the new project**
 
    ```bash
    cd <your-data-catalog>
    ```
 
-5. **Initialise a Git repository** and push to the remote you specified:
+### 5. **Initialise a Git repository** and push to the remote you specified:
 
    ```bash
    git init -b main
@@ -95,11 +95,20 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 
    ```
 
- 6.  **Enable GitHub Pages**
+### 5.a **If that doesn't work**
 
-   1. Go to your repository on GitHub → **Settings** → **Pages**.  
-   2. Under **Source**, select the 'Github Actions' option  
-   3. GitHub will publish the site at `https://<your‑username>.github.io/<your‑repo>/`.  
+Github configurations can be finnicky some times. If the above doesn't work, you can also:
+
+1. create a new repository through the web browser. It can be complely empty, but, if you have a free account, make sure the visibility is set to 'public' so that github actions are available, and m
+2. on your computer, clone the repository.
+3. run the command under step 2, and make sure to change <your-data-catalog> to the directory you just created by cloning.
+4. open the directory in your favorite IDE or Terminal emulatator and add+commit+push the changes. 
+
+### 6.  **Enable GitHub Pages**
+  1. Go to your repository on GitHub → **Settings** → **Pages**.  
+  2. Under **Source**, select the 'Github Actions' option  
+  3. GitHub will publish the site at `https://<your‑username>.github.io/<your‑repo>/`.  
+(you may have to manually trigger the gh actions at this point or push another change to re-trigger the rendering of the data catalog)  
 
 
 
