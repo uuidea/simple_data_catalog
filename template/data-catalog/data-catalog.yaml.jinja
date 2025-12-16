@@ -1,12 +1,9 @@
 dataCatalog:
-  identifier: ex:{{catalog_name}}
+  identifier: ex:{{catalog_name|replace(' ', '_')}}
   description: a test data catalog created to validate the schema
-  title: test data catalog
+  title: {{catalog_name}}
   publisher:
     name: my name
-  # dataset:
-  #   - ex:herrcgre
-  #   - ex:bvkljfhds
 
 datasets:
   - identifier: ex:herrcgre

@@ -6,6 +6,7 @@ The repository ships with a Copier template, a reference DCAT vocabulary, a Link
 ---
 
 ## Table of Contents
+- [How it works](#how-it-works)
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Getting Started with Copier](#getting-started-with-copier)
@@ -16,6 +17,15 @@ The repository ships with a Copier template, a reference DCAT vocabulary, a Link
 - [License](#license)
 
 ---
+
+## How it works
+
+The basic idea is that the user copies this template repository using copier. This will create a git repository that contains:
+- a template for a datas catalog in yaml
+- a github actions script that will automatically generate a static website based on the contents of the catalog
+
+The user only needs to have installed git , python and copier (a python library) on their machine. Everything else is run in the github ci/cd pipeline.
+
 
 ## Overview
 - **`copier.yaml`** – defines the Copier template prompts (`catalog_name`, `github_repo`, `namespace`, `prefix`).
@@ -33,7 +43,7 @@ The goal is to give you a ready‑to‑use scaffold that you can extend with you
 | Python | 3.9+ |
 | `pip` | latest |
 | `copier` | 9.0+ (installed via pip) |
-| `rdflib` | required by the helper script (installed automatically if you use the provided `requirements.txt`) |
+
 
 ---
 
