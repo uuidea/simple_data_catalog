@@ -6,7 +6,7 @@ _skip_if_exists:
 # Prompt definitions (shown in the UI when someone runs `copier copy`)
 catalog_name:
   type: str
-  default: "your-data-catalog"
+  default: "The Title Of Your Catalog"
   help: 
     "Name of the data catalog. consider referencing the organization 
     or (research) project that this catalog will be used for, like 
