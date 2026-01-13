@@ -111,6 +111,8 @@ Github configurations can be finnicky some times. If the above doesn't work, you
 (you may have to manually trigger the gh actions at this point or push another change to re-trigger the rendering of the data catalog)  
 
 
+## Outgrowing the simple_data_catalog?
+
 
 
 <!-- ## Folder Overview
