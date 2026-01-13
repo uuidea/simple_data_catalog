@@ -3,6 +3,7 @@ name: Build & Deploy Data Catalog
 # --------------------------------------------------------------
 # Trigger on pushes to the default branch and on manual dispatch
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 concurrency:
