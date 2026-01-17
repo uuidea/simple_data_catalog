@@ -1,7 +1,7 @@
-# Simple Data Catalog Model
+# Simple Data Catalog
 
 A lightweight, **LinkML‑based** template for creating and managing a DCAT‑compatible data catalog.  
-The repository ships with a Copier template, a reference DCAT vocabulary, a LinkML schema, and a helper script to bootstrap a catalog graph.
+
 
 ## WARNING
 
@@ -113,21 +113,14 @@ Github configurations can be finnicky some times. If the above doesn't work, you
 
 ## Outgrowing the simple_data_catalog?
 
+Realistically, this framework does not work well when managing large numbers of datasets. Theoretically, the data catalog can hold as much information as github will let yuo, but managing the data in a yaml file will become cumbersome. 
 
+That does not have to stop you from using it as your first steps into data management and data cataloging for your project/oranization. Because the data model of this project is entirely based on W3C standards, migrating the data you have created should be relatively straight forward; Any application that supports DCAT should be able to load (most of) the catalog information automatically. Support for ODRL (the policies) and DQV (the data quality data) are unfortunately less common (please drop feature requests at with your favorite data cataloging application). Forutnately these data models aren't very complex so a nifty data engineer/scientist should be able to hack a translation with limited effort. The data model is managed [here](https://github.com/uuidea/simple_data_catalog_model/) and documented [here](https://uuidea.github.io/simple_data_catalog_model/documentation/schema/index.html)
 
-<!-- ## Folder Overview
+Alternatively, for those who are happy with the framework but just want a little more muscle (and perhaps support automated pushes from source systems to the data catalog): the code that generartes the static pages (can be found [here](https://github.com/uuidea/simple-data-catalog-generator)) runs off an rdf graph. It shouldn't be too hard to run this from a triple store like Apache Fuseki or really anything with a SPARQL endpoint.
 
-```
-/copier.yaml                         # Copier template definition
-/simple_data_catalog_model/
-    reference-standards/
-        dcat.ttl                     # DCAT vocabulary notes (es/it)
-    src/
-        simple_data_catalog_model/
-            data-catalog.yaml        # LinkML schema (prefixes, classes)
-        simple_data_catalog/
-            create_data_catalog.py   # Helper to bootstrap a catalog graph
-``` -->
+This is a feature that might be implemented in the future if there is demand for it.
+
 
 ---
 ## Additional Documentation
