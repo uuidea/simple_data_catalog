@@ -139,4 +139,4 @@ uv run linkml-validate -s simple_data_catalog_model/src/simple_data_catalog_mode
 
 ## Customization
 
-If you wish to custoomize the look of the catalog, this can be done in the suplemental-ui directory. For instance, if you wish to change the logo in the top left corner with your own, replace the file in ```supplemental-ui/img/logo.svg``` with your own. **Make sure you call the new file 'logo.svg'**
+If you wish to custoomize the look of the catalog, this can be done in the suplemental-ui directory. For instance, if you wish to change the logo in the top left corner with your own, replace the file in ```supplemental-ui/img/logo.svg``` with your own. **Make sure to call the new file 'logo.svg'**
