@@ -2,20 +2,14 @@
 
 A lightweight, LinkML‑based data catalog that can be generated and validated automatically via **Copier** templates and **GitHub Actions**.
 
----
-
-## WARNING
-
-***This project is pre-production. Backwards compatibility is not yet guaranteed.
-While the ultimate goal for the project is to valdiate against [DCAT AP](https://op.europa.eu/en/web/eu-vocabularies/dcat-ap) this is currently not the case yet. As the remaining issues will be fixed, this might result in incompatibility with the current data format.***
-
 
 ## Table of Contents
 
 1. [Adding Content to the Catalog](#adding-content-to-the-catalog)  
 2. [Managing Repository Permissions](#managing-repository-permissions)  
 3. [What Happens After a Push?](#what-happens-after-a-push)  
-4. [Development Workflow (for reference)](#development-workflow)  
+4. [Development Workflow (for reference)](#development-workflow)
+5. [Customization](#customization)  
 
 ---
 
@@ -140,3 +134,9 @@ bash template/scripts/generate-datacatalog.sh
 
 # 3. Validate manually
 uv run linkml-validate -s simple_data_catalog_model/src/simple_data_catalog_model/data-catalog.yaml data-catalog/data-catalog.yaml
+
+```
+
+## Customization
+
+If you wish to custoomize the look of the catalog, this can be done in the suplemental-ui directory. For instance, if you wish to change the logo in the top left corner with your own, replace the file in ```supplemental-ui/img/logo.svg``` with your own. **Make sure to call the new file 'logo.svg'**
