@@ -2,12 +2,12 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{{or site.url siteRootPath}}}" style="display: flex; align-items: center; gap: 0.5rem;">
-        <img src="{{{uiRootPath}}}/img/logoLarge.svg" alt="{{site.title}} Logo" style="height: 2rem; width: auto;">
+        <img src="{{{uiRootPath}}}/img/logo.svg" alt="{{site.title}} Logo" style="height: 2rem; width: auto;">
         <span>{{site.title}}</span>
       </a>
+      <a class="navbar-item" href="{{{or site.url siteRootPath}}}">{{site.title}}</a>
       {{#if env.SITE_SEARCH_PROVIDER}}
       <div class="navbar-item search hide-for-print">
-        <img src="{{{uiRootPath}}}/img/logo.svg" alt="{{site.title}} Logo" style="height: 2rem; width: auto;">
         <div id="search-field" class="field">
           <input id="search-input" type="text" placeholder="Search the docs"{{#if page.home}} autofocus{{/if}}>
           <label class="filter checkbox">
@@ -30,3 +30,4 @@
     </div>
   </nav>
 </header>
+
