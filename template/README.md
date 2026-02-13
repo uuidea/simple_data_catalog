@@ -7,9 +7,10 @@ A lightweight, LinkML‑based data catalog that can be generated and validated a
 
 1. [Adding Content to the Catalog](#adding-content-to-the-catalog)  
 2. [Managing Repository Permissions](#managing-repository-permissions)  
-3. [What Happens After a Push?](#what-happens-after-a-push)  
-4. [Development Workflow (for reference)](#development-workflow)
-5. [Customization](#customization)  
+3. [What Happens After a Push?](#what-happens-after-a-push)
+4. [Submitting Your Catalog to a Central Registry](#submitting-your-catalog-to-a-central-registry)
+5. [Development Workflow (for reference)](#development-workflow)
+6. [Customization](#customization)  
 
 ---
 
@@ -120,6 +121,43 @@ Repository owners can control who can **commit**, **push**, and **merge** change
 3. **If validation fails**, the workflow aborts and the CI status on the PR becomes **failed**. Reviewers must fix the YAML before merging.
 
 4. **Successful runs** result in a green checkmark on the PR/commit, indicating the catalog is up‑to‑date and syntactically correct.
+
+---
+
+## Submitting Your Catalog to a Central Registry
+
+You can submit your data catalog to a central registry (e.g., `uuidea/sdc-catalog`) to make it discoverable by others. This is done through an automated workflow that creates a Pull Request on your behalf.
+
+📖 **For detailed instructions, see [docs/SUBMITTING_TO_REGISTRY.md](docs/SUBMITTING_TO_REGISTRY.md)**
+
+### Quick Start
+
+1. **Create a Personal Access Token** (one-time setup):
+   - GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Generate token with `repo` and `workflow` scopes
+   - Copy the token
+
+2. **Add token to repository secrets**:
+   - Your repository → Settings → Secrets and variables → Actions
+   - New repository secret: `CATALOG_SUBMISSION_TOKEN`
+   - Paste your token
+
+3. **Submit your catalog**:
+   - Go to **Actions** tab in your repository
+   - Select **"Submit Data Catalog to Central Registry"**
+   - Click **"Run workflow"**
+   - Default target: `uuidea/sdc-catalog`
+
+### What Happens
+
+- Your repository is forked (if needed)
+- Your `dataCatalog` is transformed into a `Dataset`
+- Missing namespace prefixes are automatically added
+- A Pull Request is created for manual review
+
+See the [full documentation](docs/SUBMITTING_TO_REGISTRY.md) for detailed setup instructions, troubleshooting, and FAQs.
+
+📋 **Quick Reference**: [docs/SUBMISSION_QUICKREF.md](docs/SUBMISSION_QUICKREF.md) - One-page cheat sheet
 
 ---
 

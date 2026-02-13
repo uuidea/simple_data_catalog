@@ -1,0 +1,207 @@
+name: Submit Data Catalog to Central Registry
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_repo:
+        description: 'Target catalog repository (owner/repo format)'
+        default: 'uuidea/sdc-catalog'
+        required: true
+      target_branch:
+        description: 'Target branch in the central catalog'
+        default: 'main'
+        required: true
+
+jobs:
+  submit-to-catalog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          path: source-repo
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      
+      - name: Install dependencies
+        run: |
+          pip install pyyaml requests
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      
+      - name: Authenticate with GitHub CLI
+        run: |
+          echo "${{ secrets.CATALOG_SUBMISSION_TOKEN }}" | gh auth login --with-token
+        env:
+          GH_TOKEN: ${{ secrets.CATALOG_SUBMISSION_TOKEN }}
+      
+      - name: Check if fork exists
+        id: check-fork
+        run: |
+          FORK_EXISTS=$(gh repo list --limit 100 --json nameWithOwner --jq '.[] | select(.nameWithOwner == "${{ github.repository_owner }}/${{ github.event.inputs.target_repo }}" | split("/")[1]) | .nameWithOwner' || echo "")
+          if [ -n "$FORK_EXISTS" ]; then
+            echo "FORK_EXISTS=true" >> $GITHUB_OUTPUT
+            echo "FORK_NAME=$FORK_EXISTS" >> $GITHUB_OUTPUT
+          else
+            echo "FORK_EXISTS=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.CATALOG_SUBMISSION_TOKEN }}
+      
+      - name: Create fork if not exists
+        id: create-fork
+        if: steps.check-fork.outputs.FORK_EXISTS == 'false'
+        run: |
+          echo "Creating fork of ${{ github.event.inputs.target_repo }}..."
+          gh repo fork ${{ github.event.inputs.target_repo }} --default-branch-only --remote=false
+          # Wait for fork to be ready
+          sleep 5
+          FORK_NAME="${{ github.repository_owner }}/${{ github.event.inputs.target_repo }}"
+          echo "FORK_NAME=$FORK_NAME" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.CATALOG_SUBMISSION_TOKEN }}
+      
+      - name: Set fork name
+        id: set-fork
+        run: |
+          if [ "${{ steps.check-fork.outputs.FORK_EXISTS }}" == "true" ]; then
+            echo "FORK_NAME=${{ steps.check-fork.outputs.FORK_NAME }}" >> $GITHUB_OUTPUT
+          else
+            TARGET_REPO="${{ github.event.inputs.target_repo }}"
+            REPO_NAME=$(echo $TARGET_REPO | cut -d'/' -f2)
+            echo "FORK_NAME=${{ github.repository_owner }}/$REPO_NAME" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Clone forked repository
+        run: |
+          gh repo clone ${{ steps.set-fork.outputs.FORK_NAME }} target-repo
+        env:
+          GH_TOKEN: ${{ secrets.CATALOG_SUBMISSION_TOKEN }}
+        working-directory: ${{ github.workspace }}
+      
+      - name: Setup upstream remote
+        run: |
+          cd target-repo
+          git remote add upstream https://github.com/${{ github.event.inputs.target_repo }}.git
+          git fetch upstream ${{ github.event.inputs.target_branch }}
+          git checkout -b submit-catalog-${{ github.run_id }} upstream/${{ github.event.inputs.target_branch }}
+      
+      - name: Transform and submit data catalog
+        id: transform
+        run: |
+          python ${{ github.workspace }}/source-repo/scripts/submit-to-catalog.py \
+            --source "${{ github.workspace }}/source-repo/data-catalog/data-catalog.yaml" \
+            --target "${{ github.workspace }}/target-repo/data-catalog/data-catalog.yaml" \
+            --target-prefixes "${{ github.workspace }}/target-repo/prefix.yaml" \
+            --repo-name "${{ github.repository }}" \
+            --repo-url "https://github.com/${{ github.repository }}"
+      
+      - name: Check for prefix changes
+        id: check-prefixes
+        run: |
+          if [ -f "${{ github.workspace }}/target-repo/prefix_changes.md" ]; then
+            echo "PREFIX_CHANGES=true" >> $GITHUB_OUTPUT
+            cat "${{ github.workspace }}/target-repo/prefix_changes.md" >> $GITHUB_ENV
+          else
+            echo "PREFIX_CHANGES=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit changes
+        run: |
+          cd target-repo
+          git add data-catalog/data-catalog.yaml
+          
+          # Check if prefix.yaml was modified
+          if git diff --cached --name-only | grep -q "prefix.yaml"; then
+            git add prefix.yaml
+          fi
+          
+          git commit -m "Add dataset from ${{ github.repository }}
+          
+          Submitted via automated workflow from ${{ github.repository }}
+          Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      
+      - name: Push to fork
+        run: |
+          cd target-repo
+          git push origin submit-catalog-${{ github.run_id }}
+        env:
+          GH_TOKEN: ${{ secrets.CATALOG_SUBMISSION_TOKEN }}
+      
+      - name: Create Pull Request
+        id: create-pr
+        run: |
+          cd target-repo
+          
+          # Build PR body
+          PR_BODY=$(cat <<EOF
+          ## Dataset Submission from ${{ github.repository }}
+          
+          This pull request adds a new dataset to the central catalog.
+          
+          ### Source Repository
+          - **Repository:** ${{ github.repository }}
+          - **URL:** https://github.com/${{ github.repository }}
+          - **Submitted by:** @${{ github.actor }}
+          - **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          
+          ### Changes Made
+          - Added dataset entry to \`data-catalog/data-catalog.yaml\`
+          $(if [ "${{ steps.check-prefixes.outputs.PREFIX_CHANGES }}" == "true" ]; then echo "- Added missing namespace prefixes to \`prefix.yaml\`"; fi)
+          
+          EOF
+          )
+          
+          # Add prefix warnings if any
+          if [ "${{ steps.check-prefixes.outputs.PREFIX_CHANGES }}" == "true" ]; then
+            PR_BODY="$PR_BODY
+          
+          ### ⚠️ Namespace Prefixes Added
+          The following namespace prefixes were not found in the target catalog and have been added to \`prefix.yaml\`:
+          
+          $(cat "${{ github.workspace }}/target-repo/prefix_changes.md")
+          
+          Please review these additions to ensure they are correct.
+          "
+          fi
+          
+          # Create PR
+          PR_URL=$(gh pr create \
+            --repo ${{ github.event.inputs.target_repo }} \
+            --base ${{ github.event.inputs.target_branch }} \
+            --head ${{ github.repository_owner }}:submit-catalog-${{ github.run_id }} \
+            --title "Add dataset from ${{ github.repository }}" \
+            --body "$PR_BODY")
+          
+          echo "PR_URL=$PR_URL" >> $GITHUB_OUTPUT
+          echo "Pull request created: $PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.CATALOG_SUBMISSION_TOKEN }}
+      
+      - name: Output PR URL
+        run: |
+          echo "## Dataset Submitted Successfully! 🎉" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "A pull request has been created to add your data catalog to the central registry." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Pull Request:** ${{ steps.create-pr.outputs.PR_URL }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "1. The pull request requires manual review and approval" >> $GITHUB_STEP_SUMMARY
+          echo "2. Once approved, the dataset will be merged into the central catalog" >> $GITHUB_STEP_SUMMARY
+          echo "3. Your data catalog will then be discoverable through the central registry" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.check-prefixes.outputs.PREFIX_CHANGES }}" == "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### ⚠️ Namespace Prefixes" >> $GITHUB_STEP_SUMMARY
+            echo "New namespace prefixes were added to the target catalog. Please review the PR carefully." >> $GITHUB_STEP_SUMMARY
+          fi
