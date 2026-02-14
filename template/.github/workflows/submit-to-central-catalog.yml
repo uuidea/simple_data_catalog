@@ -91,6 +91,8 @@ jobs:
       - name: Setup upstream remote
         run: |
           cd target-repo
+          # Remove upstream if it exists (in case of re-runs), then add it fresh
+          git remote remove upstream 2>/dev/null || true
           git remote add upstream https://github.com/${{ github.event.inputs.target_repo }}.git
           git fetch upstream ${{ github.event.inputs.target_branch }}
           git checkout -b submit-catalog-${{ github.run_id }} upstream/${{ github.event.inputs.target_branch }}
