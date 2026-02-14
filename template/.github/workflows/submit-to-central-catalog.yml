@@ -135,6 +135,8 @@ jobs:
       - name: Push to fork
         run: |
           cd target-repo
+          # Configure git to use token for HTTPS authentication
+          git remote set-url origin https://x-access-token:${{ secrets.CATALOG_SUBMISSION_TOKEN }}@github.com/${{ steps.set-fork.outputs.FORK_NAME }}.git
           git push origin submit-catalog-${{ github.run_id }}
         env:
           GH_TOKEN: ${{ secrets.CATALOG_SUBMISSION_TOKEN }}
